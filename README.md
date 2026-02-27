@@ -91,7 +91,7 @@ X/Y MODE
 ```
 
 ### Audio Settings
-Check your [audio setting](audio_settings.py), run the script and remember the id of your device, usually ASIO. All script default to id=10, eventually the sound card has 4 outputs. Check your quadrophonic setup with [test_speakers](test_speakers.py).
+Check your [audio setting](audio_setting.py), run the script and remember the id of your device, usually ASIO. All script default to id=10, eventually the sound card has 4 outputs. Check your quadrophonic setup with [test_speakers](test_speakers.py).
 
 
 
