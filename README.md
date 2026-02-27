@@ -1,5 +1,5 @@
 # Resonating With You
-Welcome to repository of **Resonating With You**, an event held in Febrary 2026 at Dzamling Gar featuring an immersive sound experience designed to help you better understand yourself and the characteristics of your own perception.
+Welcome to repository of **Resonating With You**, an event held in February 2026 at Dzamling Gar featuring an immersive sound experience designed to help you better understand yourself and the characteristics of your own perception.
 
 
 ## Requirements
@@ -12,8 +12,8 @@ Choose a device, either mini or regular; leds will operate RED and GREEN, no BLU
 - MK2   
 
 
-### AAudio Settings
-Check your [audio setting](audio_settings.py), run the script and remember the id of y9our device, usually ASIO. All script default to id=10.
+### Audio Settings
+Check your [audio setting](audio_settings.py), run the script and remember the id of your device, usually ASIO. All script default to id=10, eventually the sound card has 4 outputs. 
 
 
 ## Initialization
