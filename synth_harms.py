@@ -4,10 +4,7 @@ import random
 import pyo
 import threading
 import queue
-try:
-    import launchpad_py as launchpad
-except ImportError:
-    sys.exit("Error: launchpad_py is required.")
+import launchpad_py as launchpad
 
 # --- LAUNCHPAD DETECTION ---
 lp = launchpad.Launchpad()
