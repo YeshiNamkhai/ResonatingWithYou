@@ -12,14 +12,14 @@ Choose a device, either mini or regular; leds will operate RED and GREEN, no BLU
 - MK2   
 
 
-### AUDIO SETTINGS
+### AAudio Settings
 Check your [audio setting](audio_settings.py), run the script and remember the id of y9our device, usually ASIO. All script default to id=10.
 
 
-## INITIALIZATION
+## Initialization
 All scripts initialize Launchpad over MIDI before audio (pygame), moreover the [PYO](https://belangeo.github.io/pyo/) server should not activate MIDI.
 
-```
+```python
 # --- 1. Launchpad Setup ---
 mode = None
 lp = launchpad.Launchpad()
