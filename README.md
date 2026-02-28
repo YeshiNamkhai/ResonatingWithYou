@@ -97,7 +97,7 @@ Check your [audio setting](audio_setting.py), run the script and remember the id
 
 
 ## Initialization
-All scripts initialize Launchpad over MIDI before audio (pygame), moreover the [PYO](https://belangeo.github.io/pyo/) server should not activate MIDI and being imported before.
+All scripts initialize Launchpad over MIDI using pygame, while audio engine is initialized with [PYO](https://belangeo.github.io/pyo/) without MIDI support; pay attention to precedence or import with name.
 
 ```python
 from pyo import *
