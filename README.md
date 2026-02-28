@@ -206,4 +206,35 @@ def init_random_scale():
     SCALES[name] = scale
 ```
 
-## Chaotic 
+## Stochastic field
+The [stochastic_field](stochastic_field.py) script is a rhythmic musical instrument that organizes notes in quadraphony, with their relative positioning allowing the user to choose the root note, the reference scale. The left area of ​​the grid generates even rhythms, while the right area generates odd rhythms; the octave is distributed from top to bottom.
+
+Buttons follow this schema:
+"""
+Stochastic Field: Launchpad Interface Mapping
+===========================================================
+
+--- TOP CONTROL BUTTONS ---
+[0] Key Down       : Decrements global root note (C, C#, etc.)
+[1] Key Up         : Increments global root note
+[2] Scale Down     : Cycles backward through the SCALES_DICT
+[3] Scale Up       : Cycles forward through the SCALES_DICT
+[4] Reverb Mode    : Cycles through Small Room, Medium Hall, and Large Hall
+[5] Migration      : Toggles random agent displacement (Active units jump to empty slots)
+[6] Vol Down       : Decrements master fader gain by 0.05
+[7] Vol Up         : Increments master fader gain by 0.05
+
+--- SIDE CONTROL BUTTONS ---
+[0] Panic Reset   : Fades master out, clears all active agents, then restores volume
+[1] Delay Cycle    : Cycles delay timings: OFF -> 1/4 -> 1/8 -> 1/16
+[2] Chorus Cycle   : Cycles chorus settings: OFF -> SUBTLE -> MOD -> DEEP
+[3] Next Sound     : Cycles to the next FM Synth Profile (e.g., Glass Pluck, Bamboo FM)
+[4] Prev Sound     : Cycles to the previous FM Synth Profile
+[5] System Off     : Initiates a 4-second fade out and shuts down the server
+
+--- 8x8 GRID ---
+- Interaction      : Toggle action. Press to activate a Cell Agent; press again to deactivate
+- Panning          : X/Y position calculates gain across 4 output channels (Quadraphonic)
+- Tuning/Speed     : Position determines octave offset, scale note, and playback frequency
+- Visuals          : Dim color = Ready; Bright color = Triggering; Red = Scale Root
+"""

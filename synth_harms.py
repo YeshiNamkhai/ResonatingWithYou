@@ -7,7 +7,7 @@ from pyo import *
 import launchpad_py as launchpad
 
 """
-Quadraphonic Harmonic Synth V2
+Quadraphonic Harmonic Synth
 ==============================
 - Top Button 0: Key Up (Increments root note)
 - Top Button 1: Key Down (Decrements root note)
