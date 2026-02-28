@@ -97,31 +97,34 @@ Check your [audio setting](audio_setting.py), run the script and remember the id
 The soundstage is arranged in quadraphonic fashion, with the top-left grid outputting channel 0, the top-right grid outputting channel 1, the bottom-left grid outputting channel 3, and finally the bottom-right grid outputting channel 4.
 ```mermaid
 graph TD
-    subgraph "Front (Listening Direction)"
-        S0[("Speaker 0: Front-Left (TL)")] 
-        S1[("Speaker 1: Front-Right (TR)")]
+    subgraph "FRONT"
+        S0["Speaker 0 (CH 0)<br/>Front-Left"]
+        S1["Speaker 1 (CH 1)<br/>Front-Right"]
     end
 
-    subgraph "Center / Listening Position"
-        LP["Launchpad Grid Center"]
+    subgraph "LISTENING AREA"
+        LP["Launchpad Controller<br/>(Center Point)"]
     end
 
-    subgraph "Rear"
-        S2[("Speaker 2: Rear-Left (BL)")]
-        S3[("Speaker 3: Rear-Right (BR)")]
+    subgraph "REAR"
+        S2["Speaker 2 (CH 2)<br/>Rear-Left"]
+        S3["Speaker 3 (CH 3)<br/>Rear-Right"]
     end
 
-    %% Routing based on get_quad_gains logic
+    %% Positioning Relationships
+    S0 --- S1
     S0 --- LP
     S1 --- LP
     S2 --- LP
     S3 --- LP
+    S2 --- S3
 
-    style LP fill:#2ecc71,stroke:#333,stroke-width:2px
-    style S0 fill:#f39c12,stroke:#333
-    style S1 fill:#f39c12,stroke:#333
-    style S2 fill:#f39c12,stroke:#333
-    style S3 fill:#f39c12,stroke:#333
+    %% Styling
+    style LP fill:#2ecc71,stroke:#333,stroke-width:2px,color:#000
+    style S0 fill:#3498db,stroke:#333,color:#fff
+    style S1 fill:#3498db,stroke:#333,color:#fff
+    style S2 fill:#3498db,stroke:#333,color:#fff
+    style S3 fill:#3498db,stroke:#333,color:#fff
 ```
 
 
