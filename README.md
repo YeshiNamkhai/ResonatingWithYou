@@ -210,7 +210,7 @@ def init_random_scale():
 The [stochastic_field](stochastic_field.py) script is a rhythmic musical instrument that organizes notes in quadraphony, with their relative positioning allowing the user to choose the root note, the reference scale. The left area of ​​the grid generates even rhythms, while the right area generates odd rhythms; the octave is distributed from top to bottom.
 
 Buttons follow this schema:
-"""
+"""python
 Stochastic Field: Launchpad Interface Mapping
 ===========================================================
 
