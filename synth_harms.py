@@ -132,7 +132,8 @@ delay_time_sig = Sig(0.0075)
 delay_feed_sig = Sig(0.55)
 delay_feed_port = Port(delay_feed_sig, 0.2, 0.2)
 delay_input_mix = Sig(0) 
-delay_input_port = Port(delay_input_mix, 0.2, 0.2) # Ramps input to delay
+# Fixed: Increased port time to 0.5s for a smoother fade when switching delay states
+delay_input_port = Port(delay_input_mix, risetime=0.5, falltime=0.5) 
 
 delays = [Delay(quad_buses[i] * delay_input_port, delay=delay_time_sig, feedback=delay_feed_port, mul=1.0) for i in range(4)]
 delay_to_reverb = [quad_buses[i] + delays[i] for i in range(4)]
@@ -188,7 +189,6 @@ def get_pitch(x, y_logical):
 def get_led_color(pitch, pad_id):
     if pad_id in active_voices or pitch in held_pitches:
         return (63, 63, 63) if mode == "MK2" else (3, 3)
-    # Corrected: Factor in cur_key and octave_offset for visual feedback
     rel_pitch = (pitch - cur_key - (octave_offset * 12)) % 12
     scale = SCALES[SCALE_NAMES[cur_scale]]
     closest = min(scale, key=lambda x: abs(x - rel_pitch))
@@ -271,10 +271,8 @@ def apply_immediate_transpose():
         else: x, y_log = pid % 16, 7 - (pid // 16)
         pitch = get_pitch(x, y_log)
         scale = SCALES[SCALE_NAMES[cur_scale]]
-        # Corrected: Subtract both key and octave offset before snapping
         rel_pitch = (pitch - cur_key - (octave_offset * 12)) % 12
         closest = min(scale, key=lambda x: abs(x - rel_pitch))
-        # Re-apply key and octave to final frequency
         final_pitch = (pitch - rel_pitch) + closest
         if abs(closest - rel_pitch) < 0.5:
             voices_osc[v_idx].setFreq(midiToHz(final_pitch))
@@ -284,10 +282,8 @@ def apply_immediate_transpose():
 def play_note(pad_id, x, y_logical):
     global voice_ptr
     pitch = get_pitch(x, y_logical); scale = SCALES[SCALE_NAMES[cur_scale]]
-    # Corrected: Subtract both key and octave offset before snapping to scale
     rel_pitch = (pitch - cur_key - (octave_offset * 12)) % 12
     closest = min(scale, key=lambda x: abs(x - rel_pitch))
-    # Re-apply key and octave to final frequency
     final_pitch = (pitch - rel_pitch) + closest
     if abs(closest - rel_pitch) < 0.5: voices_osc[voice_ptr].setFreq(midiToHz(final_pitch))
     else: voices_osc[voice_ptr].setFreq(midiToHz(pitch))
