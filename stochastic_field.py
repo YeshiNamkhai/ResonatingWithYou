@@ -60,7 +60,14 @@ else:
     exit("Launchpad not detected.")
 lp.Reset()
 
-# --- 2. Global State ---
+# --- 2. Audio Setup ---
+s = Server(sr=48000, nchnls=4, duplex=0, buffersize=BUFFER_SIZE,winhost=AUDIO_HOST)
+s.setOutputDevice(AUDIO_DEVICE)
+s.deactivateMidi()
+s.boot().start()
+
+
+# --- 3. Global State ---
 running = True
 is_fading_out = False
 reverb_mode = 0 
@@ -77,7 +84,7 @@ chorus_cycle_idx = 0
 chorus_settings = [{"depth":0, "fb":0}, {"depth":1, "fb":0.1}, {"depth":3, "fb":0.3}, {"depth":5, "fb":0.5}]
 fx_colors = [(0,0), (0,63), (63,63), (63,0)] # Off, Blue, Cyan, Red
 
-# --- 3. Profiles & Scales ---
+# --- 4. Profiles & Scales ---
 SOUND_PROFILES = [
     {"name": "V7.4 Pulse", "bell": (3.5, 12), "mid": (1.0, 1.5), "bass": (1.0, 0.8)},
     {"name": "Glass Pluck", "bell": (7.1, 5), "mid": (2.0, 1.2), "bass": (1.0, 0.5)},
@@ -105,12 +112,6 @@ target_scale_idx, root_note = 0, 0
 COLOR_MAP_BRIGHT = {"Chromatic": (63,63) if mode=="Mk2" else (3,3), "Harmonic Series": (63,15) if mode=="Mk2" else (3,1), "Partch Otonality": (0,63) if mode=="Mk2" else (0,3), "Partch Utonality": (40,63) if mode=="Mk2" else (2,3), "Major": (63,40) if mode=="Mk2" else (3,2), "Minor": (20,20) if mode=="Mk2" else (1,1)}
 COLOR_MAP_DIM = {k: (max(1, v[0]//6), max(1, v[1]//6)) for k, v in COLOR_MAP_BRIGHT.items()}
 COLOR_ROOT_BRIGHT, COLOR_ROOT_DIM = ((63,0), (12,0)) if mode=="Mk2" else ((3,0), (1,0))
-
-# --- 4. Audio Setup ---
-s = Server(sr=48000, nchnls=4, duplex=0, buffersize=BUFFER_SIZE,winhost=AUDIO_HOST)
-s.setOutputDevice(AUDIO_DEVICE)
-s.deactivateMidi()
-s.boot().start()
 
 rev_inputs = [Sig(0) for _ in range(4)]
 delays = [Delay(rev_inputs[i], delay=0.1, feedback=0.35, mul=0.5) for i in range(4)]
