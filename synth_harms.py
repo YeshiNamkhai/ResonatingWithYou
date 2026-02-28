@@ -7,14 +7,26 @@ from pyo import *
 import launchpad_py as launchpad
 
 """
-4-Channel Audio & Grid Test V2
+Quadraphonic Harmonic Synth V2
 ==============================
-- Side Button 0: Toggles Auto-Scan (Pink Noise, Green LED)
-- Side Button 1: Toggles Manual Mode (Sine Wave, Green LED on press)
-- Top Buttons 0-3: Momentary Channel Solo (Sine Wave, Red on press)
-- Top Buttons 6-7: Main Volume (Amber 60%)
-- Side Button 6: Exit
+- Top Button 0: Key Up (Increments root note)
+- Top Button 1: Key Down (Decrements root note)
+- Top Button 2: Scale Up (Cycles through 20+ musical scales)
+- Top Button 3: Scale Down (Cycles through 20+ musical scales)
+- Top Button 4: Harmonics Up (Momentary increase for Blit oscillator)
+- Top Button 5: Harmonics Down (Momentary decrease for Blit oscillator)
+- Top Button 6: Main Volume Down (Decrements master gain)
+- Top Button 7: Main Volume Up (Increments master gain)
+
+- Side Button 0: Reverb Cycle (OFF -> LOW -> MED -> HIGH)
+- Side Button 1: Delay Cycle (OFF -> LOW -> MED -> HIGH)
+- Side Button 4: Octave Down (Shifts grid pitch -3 octaves)
+- Side Button 5: Octave Up (Shifts grid pitch +3 octaves)
+- Side Button 6: Exit (Stops server and shuts down)
+
+- 8x8 Grid: Note trigger with Quad Panning (X/Y position determines output channel gain)
 """
+
 AUDIO_DEVICE = 10
 AUDIO_HOST = 'asio' 
 BUFFER_SIZE = 512 
