@@ -96,40 +96,33 @@ Check your [audio setting](audio_setting.py), run the script and remember the id
 #### Quadriphonic setup
 The soundstage is arranged in quadraphonic fashion, with the top-left grid outputting channel 0, the top-right grid outputting channel 1, the bottom-left grid outputting channel 3, and finally the bottom-right grid outputting channel 4.
 ```mermaid
-graph TD
-    subgraph " "
-    direction TB
-        subgraph "FRONT"
-            direction LR
-            S0["[0] FRONT LEFT"] ~~~ S1["[1] FRONT RIGHT"]
-        end
-
-        C(( "LISTENER" ))
-
-        subgraph "REAR"
-            direction LR
-            S2["[2] REAR LEFT"] ~~~ S3["[3] REAR RIGHT"]
-        end
+flowchart TD
+    subgraph Circle ["Quadraphonic Sound Field"]
+        direction TB
+        
+        %% Top Row
+        S0["Box 0: Front Left"] --- S1["Box 1: Front Right"]
+        
+        %% Vertical Connectors for the "Circle" shape
+        S0 --- S2
+        S1 --- S3
+        
+        %% Listener Center
+        S0 -.-> Center((LISTENER))
+        S1 -.-> Center
+        S2 -.-> Center
+        S3 -.-> Center
+        
+        %% Bottom Row
+        S2["Box 2: Rear Left"] --- S3["Box 3: Rear Right"]
     end
 
-    %% Circle Connections
-    S0 --- S1
-    S1 --- S3
-    S3 --- S2
-    S2 --- S0
-
-    %% Center Connections
-    S0 -.-> C
-    S1 -.-> C
-    S2 -.-> C
-    S3 -.-> C
-
-    %% Styling
-    style C fill:#2ecc71,stroke:#333,stroke-width:2px,color:#fff
-    style S0 fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style S1 fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style S2 fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style S3 fill:#f9f9f9,stroke:#333,stroke-width:2px
+    %% Styling to emphasize the 4 Boxes
+    style S0 fill:#fff,stroke:#333,stroke-width:2px
+    style S1 fill:#fff,stroke:#333,stroke-width:2px
+    style S2 fill:#fff,stroke:#333,stroke-width:2px
+    style S3 fill:#fff,stroke:#333,stroke-width:2px
+    style Center fill:#2ecc71,color:#fff
 ```
 
 
