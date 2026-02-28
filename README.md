@@ -110,7 +110,7 @@ The soundstage is arranged in quadraphonic fashion, with the top-left grid outpu
      +-----------------------------------+
     3          REAR speakers              4
 ```
-Buttons:
+Top row buttons 0-3:
 ```mermaid
 graph TD
     subgraph "Launchpad Top Row (Control)"
