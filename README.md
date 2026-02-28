@@ -98,29 +98,29 @@ The soundstage is arranged in quadraphonic fashion, with the top-left grid outpu
 ```mermaid
 graph TD
     subgraph "FRONT"
-        S0["Speaker 0 (CH 0)<br/>Front-Left"]
-        S1["Speaker 1 (CH 1)<br/>Front-Right"]
+        S0["Speaker 0 (CH 0)<br/>Front-Left"] --- S1["Speaker 1 (CH 1)<br/>Front-Right"]
     end
 
-    subgraph "LISTENING AREA"
-        LP["Launchpad Controller<br/>(Center Point)"]
+    subgraph "LISTENING POSITION"
+        LP["User / Launchpad"]
     end
 
     subgraph "REAR"
-        S2["Speaker 2 (CH 2)<br/>Rear-Left"]
-        S3["Speaker 3 (CH 3)<br/>Rear-Right"]
+        S2["Speaker 2 (CH 2)<br/>Rear-Left"] --- S3["Speaker 3 (CH 3)<br/>Rear-Right"]
     end
 
-    %% Positioning Relationships
-    S0 --- S1
+    %% Connection to Center
     S0 --- LP
     S1 --- LP
     S2 --- LP
     S3 --- LP
-    S2 --- S3
 
-    %% Styling
-    style LP fill:#2ecc71,stroke:#333,stroke-width:2px,color:#000
+    %% Side Connections
+    S0 --- S2
+    S1 --- S3
+
+    %% Styling for clarity
+    style LP fill:#2ecc71,stroke:#333,stroke-width:2px,color:#fff
     style S0 fill:#3498db,stroke:#333,color:#fff
     style S1 fill:#3498db,stroke:#333,color:#fff
     style S2 fill:#3498db,stroke:#333,color:#fff
