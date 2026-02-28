@@ -96,11 +96,32 @@ Check your [audio setting](audio_setting.py), run the script and remember the id
 #### Quadriphonic setup
 The soundstage is arranged in quadraphonic fashion, with the top-left grid outputting channel 0, the top-right grid outputting channel 1, the bottom-left grid outputting channel 3, and finally the bottom-right grid outputting channel 4.
 ```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+graph TD
+    subgraph "Front (Listening Direction)"
+        S0[("Speaker 0: Front-Left (TL)")] 
+        S1[("Speaker 1: Front-Right (TR)")]
+    end
+
+    subgraph "Center / Listening Position"
+        LP["Launchpad Grid Center"]
+    end
+
+    subgraph "Rear"
+        S2[("Speaker 2: Rear-Left (BL)")]
+        S3[("Speaker 3: Rear-Right (BR)")]
+    end
+
+    %% Routing based on get_quad_gains logic
+    S0 --- LP
+    S1 --- LP
+    S2 --- LP
+    S3 --- LP
+
+    style LP fill:#2ecc71,stroke:#333,stroke-width:2px
+    style S0 fill:#f39c12,stroke:#333
+    style S1 fill:#f39c12,stroke:#333
+    style S2 fill:#f39c12,stroke:#333
+    style S3 fill:#f39c12,stroke:#333
 ```
 
 
