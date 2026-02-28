@@ -141,10 +141,33 @@ s.deactivateMidi()
 s.boot().start()
 ```
 ## Harmonic synth
-The [synth_harms](synth_harms.py) script features a musical instrument selectable by its starting note (root) and scale. There are 20 different scales, including tonal, non-tonal, and microtonal, one of which is randomly generated upon startup. The buttons at the top allow you to increase or decrease the natural harmonics between 5 and 60, and control the volume. The buttons on the side activate the effects: reverb, delay, chorus, compression, and octave shift; the last button on the side turns everything off.
+The [synth_harms](synth_harms.py) script features a musical instrument selectable by its starting note (root) and scale. There are many interesting scales, including tonal, non-tonal and microtonal, one of which is randomly generated upon startup. 
 
+Buttons follow this schema:
 ```python
-# --- 20 MUSICAL SCALES ---
+"""
+Quadraphonic Harmonic Synth V2
+==============================
+- Top Button 0: Key Up (Increments root note)
+- Top Button 1: Key Down (Decrements root note)
+- Top Button 2: Scale Up (Cycles through 20+ musical scales)
+- Top Button 3: Scale Down (Cycles through 20+ musical scales)
+- Top Button 4: Harmonics Up (Momentary increase for Blit oscillator)
+- Top Button 5: Harmonics Down (Momentary decrease for Blit oscillator)
+- Top Button 6: Main Volume Down (Decrements master gain)
+- Top Button 7: Main Volume Up (Increments master gain)
+
+- Side Button 0: Reverb Cycle (OFF -> LOW -> MED -> HIGH)
+- Side Button 1: Delay Cycle (OFF -> LOW -> MED -> HIGH)
+- Side Button 4: Octave Up (Shifts grid pitch +3 octaves)
+- Side Button 5: Octave Down (Shifts grid pitch -3 octaves)
+- Side Button 6: Exit (Stops server and shuts down)
+
+- 8x8 Grid: Note trigger with Quad Panning (X/Y position determines output channel gain)
+"""
+```
+The 30 scales available are:
+```python
 SCALES = {
     "Major": [0, 2, 4, 5, 7, 9, 11], "Minor": [0, 2, 3, 5, 7, 8, 10],
     "Indian Bhairav": [0, 1.12, 3.86, 4.98, 7.02, 8.14, 10.88],
@@ -162,7 +185,11 @@ SCALES = {
     "Pentatonic Min": [0, 3, 5, 7, 10], "Blues": [0, 3, 5, 6, 7, 10],
     "Whole Tone": [0, 2, 4, 6, 8, 10], "Acoustic": [0, 2, 4, 6, 7, 9, 10],
     "Altered": [0, 1, 3, 4, 6, 8, 10], "Phrygian Dom": [0, 1, 4, 5, 7, 8, 10],
-    "Hungarian Min": [0, 2, 3, 6, 7, 8, 11], "Double Harm": [0, 1, 4, 5, 7, 8, 11]
+    "Hungarian Min": [0, 2, 3, 6, 7, 8, 11], "Double Harm": [0, 1, 4, 5, 7, 8, 11],
+    "15-TET": [0, 1.6, 4.0, 5.6, 8.0, 9.6, 11.2],
+    "19-TET": [0, 1.89, 3.79, 5.05, 6.95, 8.84, 10.74],
+    "Bohlen-Pierce": [0, 1.46, 2.93, 4.39, 5.85, 7.32, 8.78],
+    "Just Intonation": [0, 2.31, 3.86, 4.98, 7.02, 9.33, 10.88]
 }
 
 def init_random_scale():

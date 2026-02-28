@@ -11,8 +11,8 @@ Quadraphonic Harmonic Synth V2
 ==============================
 - Top Button 0: Key Up (Increments root note)
 - Top Button 1: Key Down (Decrements root note)
-- Top Button 2: Scale Up (Cycles through 20+ musical scales)
-- Top Button 3: Scale Down (Cycles through 20+ musical scales)
+- Top Button 2: Scale Up (Cycles through 30 musical scales)
+- Top Button 3: Scale Down (Cycles through 30 musical scales)
 - Top Button 4: Harmonics Up (Momentary increase for Blit oscillator)
 - Top Button 5: Harmonics Down (Momentary decrease for Blit oscillator)
 - Top Button 6: Main Volume Down (Decrements master gain)
@@ -54,7 +54,7 @@ s.setOutputDevice(AUDIO_DEVICE)
 s.deactivateMidi()
 s.boot().start()
 
-# --- 20 MUSICAL SCALES ---
+# --- 30 MUSICAL SCALES ---
 SCALES = {
     "Major": [0, 2, 4, 5, 7, 9, 11], "Minor": [0, 2, 3, 5, 7, 8, 10],
     "Indian Bhairav": [0, 1.12, 3.86, 4.98, 7.02, 8.14, 10.88],
@@ -72,7 +72,11 @@ SCALES = {
     "Pentatonic Min": [0, 3, 5, 7, 10], "Blues": [0, 3, 5, 6, 7, 10],
     "Whole Tone": [0, 2, 4, 6, 8, 10], "Acoustic": [0, 2, 4, 6, 7, 9, 10],
     "Altered": [0, 1, 3, 4, 6, 8, 10], "Phrygian Dom": [0, 1, 4, 5, 7, 8, 10],
-    "Hungarian Min": [0, 2, 3, 6, 7, 8, 11], "Double Harm": [0, 1, 4, 5, 7, 8, 11]
+    "Hungarian Min": [0, 2, 3, 6, 7, 8, 11], "Double Harm": [0, 1, 4, 5, 7, 8, 11],
+    "15-TET": [0, 1.6, 4.0, 5.6, 8.0, 9.6, 11.2],
+    "19-TET": [0, 1.89, 3.79, 5.05, 6.95, 8.84, 10.74],
+    "Bohlen-Pierce": [0, 1.46, 2.93, 4.39, 5.85, 7.32, 8.78],
+    "Just Intonation": [0, 2.31, 3.86, 4.98, 7.02, 9.33, 10.88]
 }
 
 def init_random_scale():
@@ -130,7 +134,6 @@ delay_feed_port = Port(delay_feed_sig, 0.2, 0.2)
 delay_input_mix = Sig(0) 
 delay_input_port = Port(delay_input_mix, 0.2, 0.2) # Ramps input to delay
 
-# We multiply input by delay_input_port so when it's 0, the delay stops receiving sound but keeps playing its tail.
 delays = [Delay(quad_buses[i] * delay_input_port, delay=delay_time_sig, feedback=delay_feed_port, mul=1.0) for i in range(4)]
 delay_to_reverb = [quad_buses[i] + delays[i] for i in range(4)]
 
@@ -185,7 +188,8 @@ def get_pitch(x, y_logical):
 def get_led_color(pitch, pad_id):
     if pad_id in active_voices or pitch in held_pitches:
         return (63, 63, 63) if mode == "MK2" else (3, 3)
-    rel_pitch = (pitch - cur_key) % 12
+    # Corrected: Factor in cur_key and octave_offset for visual feedback
+    rel_pitch = (pitch - cur_key - (octave_offset * 12)) % 12
     scale = SCALES[SCALE_NAMES[cur_scale]]
     closest = min(scale, key=lambda x: abs(x - rel_pitch))
     if abs(closest - rel_pitch) < 0.5:
@@ -267,18 +271,25 @@ def apply_immediate_transpose():
         else: x, y_log = pid % 16, 7 - (pid // 16)
         pitch = get_pitch(x, y_log)
         scale = SCALES[SCALE_NAMES[cur_scale]]
-        rel_pitch = (pitch - cur_key) % 12
+        # Corrected: Subtract both key and octave offset before snapping
+        rel_pitch = (pitch - cur_key - (octave_offset * 12)) % 12
         closest = min(scale, key=lambda x: abs(x - rel_pitch))
+        # Re-apply key and octave to final frequency
+        final_pitch = (pitch - rel_pitch) + closest
         if abs(closest - rel_pitch) < 0.5:
-            voices_osc[v_idx].setFreq(midiToHz(pitch - rel_pitch + closest))
+            voices_osc[v_idx].setFreq(midiToHz(final_pitch))
         else:
             voices_osc[v_idx].setFreq(midiToHz(pitch))
 
 def play_note(pad_id, x, y_logical):
     global voice_ptr
     pitch = get_pitch(x, y_logical); scale = SCALES[SCALE_NAMES[cur_scale]]
-    rel_pitch = (pitch - cur_key) % 12; closest = min(scale, key=lambda x: abs(x - rel_pitch))
-    if abs(closest - rel_pitch) < 0.5: voices_osc[voice_ptr].setFreq(midiToHz(pitch - rel_pitch + closest))
+    # Corrected: Subtract both key and octave offset before snapping to scale
+    rel_pitch = (pitch - cur_key - (octave_offset * 12)) % 12
+    closest = min(scale, key=lambda x: abs(x - rel_pitch))
+    # Re-apply key and octave to final frequency
+    final_pitch = (pitch - rel_pitch) + closest
+    if abs(closest - rel_pitch) < 0.5: voices_osc[voice_ptr].setFreq(midiToHz(final_pitch))
     else: voices_osc[voice_ptr].setFreq(midiToHz(pitch))
     gains = get_quad_gains(x, y_logical)
     for i in range(4): voices_gains[voice_ptr][i].value = gains[i]
@@ -344,7 +355,6 @@ def launchpad_listener():
                 print(f"Delay: {['OFF', 'LOW', 'MED', 'HIGH'][fx_states[1]]} | Time: {delay_time_sig.value}s | Feedback: {delay_feed_sig.value} | Input: {delay_input_mix.value}")
                 refresh_grid()
             elif (side_idx == 4 or side_idx == 5) and state > 0:
-                # Swapped: 4 increases, 5 decreases. Now transposes immediately.
                 octave_offset = min(3, octave_offset + 1) if side_idx == 4 else max(-3, octave_offset - 1)
                 apply_immediate_transpose()
                 print(f"Octave: {octave_offset}"); refresh_grid()
