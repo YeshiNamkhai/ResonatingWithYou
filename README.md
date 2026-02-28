@@ -101,6 +101,8 @@ All scripts initialize Launchpad over MIDI before audio (pygame), moreover the [
 
 ```python
 AUDIO_DEVICE = 10
+AUDIO_HOST = 'asio'
+BUFFER_SIZE = 512 
 
 # --- 1. Launchpad Setup ---
 mode = None
@@ -116,7 +118,7 @@ else:
 lp.Reset()
 
 # --- 2. Audio Server ---
-s = Server(sr=48000, nchnls=4, duplex=0, buffersize=512, winhost='asio')
+s = Server(sr=48000, nchnls=4, duplex=0, buffersize=BUFFER_SIZE, winhost=AUDIO_HOST)
 s.setOutputDevice(AUDIO_DEVICE)
 s.deactivateMidi()
 s.boot().start()

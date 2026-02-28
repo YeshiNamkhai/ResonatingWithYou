@@ -6,6 +6,19 @@ import threading
 import queue
 import launchpad_py as launchpad
 
+"""
+4-Channel Audio & Grid Test V2
+==============================
+- Side Button 0: Toggles Auto-Scan (Pink Noise, Green LED)
+- Side Button 1: Toggles Manual Mode (Sine Wave, Green LED on press)
+- Top Buttons 0-3: Momentary Channel Solo (Sine Wave, Red on press)
+- Top Buttons 6-7: Main Volume (Amber 60%)
+- Side Button 6: Exit
+"""
+AUDIO_DEVICE = 10
+AUDIO_HOST = 'asio' 
+BUFFER_SIZE = 512 
+
 # --- LAUNCHPAD DETECTION ---
 lp = launchpad.Launchpad()
 mode = "MK1"
@@ -22,6 +35,12 @@ lp.Reset()
 
 print(mode)
 lp_lock = threading.Lock()
+
+# --- PYO SETUP ---
+s = pyo.Server(sr=48000, nchnls=4, duplex=0, buffersize=BUFFER_SIZE,winhost=AUDIO_HOST)
+s.setOutputDevice(AUDIO_DEVICE)
+s.deactivateMidi()
+s.boot().start()
 
 # --- 20 MUSICAL SCALES ---
 SCALES = {
@@ -66,12 +85,6 @@ held_pitches = set()
 running = True
 harms_up_held = False
 harms_down_held = False
-
-# --- PYO SETUP ---
-s = pyo.Server(sr=48000, nchnls=4, duplex=0, buffersize=512,winhost='asio')
-s.setOutputDevice(10)
-s.deactivateMidi()
-s.boot().start()
 
 # --- QUAD AUDIO CHAIN ---
 MAX_VOICES = 16
