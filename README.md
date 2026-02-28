@@ -143,4 +143,38 @@ s.boot().start()
 ## Harmonic synth
 The [synth_harms](synth_harms.py) script features a musical instrument selectable by its starting note (root) and scale. There are 20 different scales, including tonal, non-tonal, and microtonal, one of which is randomly generated upon startup. The buttons at the top allow you to increase or decrease the natural harmonics between 5 and 60, and control the volume. The buttons on the side activate the effects: reverb, delay, chorus, compression, and octave shift; the last button on the side turns everything off.
 
+```python
+# --- 20 MUSICAL SCALES ---
+SCALES = {
+    "Major": [0, 2, 4, 5, 7, 9, 11], "Minor": [0, 2, 3, 5, 7, 8, 10],
+    "Indian Bhairav": [0, 1.12, 3.86, 4.98, 7.02, 8.14, 10.88],
+    "Indian Marwa": [0, 1.12, 3.86, 5.90, 7.02, 9.06, 10.88],
+    "Chinese Pentatonic": [0, 2.04, 3.86, 7.02, 9.06],
+    "Ligeti Micro": [0, 0.5, 2.5, 3.5, 6.5, 7.5, 10.5],
+    "Spectral": [0, 2.04, 3.86, 5.51, 7.02, 8.41, 9.69, 10.88],
+    "Partch Otonality": [0, 2.04, 3.86, 4.98, 7.02, 8.84, 10.88],
+    "Japanese Hirajoshi": [0, 2.04, 3.16, 7.02, 8.14],
+    "Japanese In Sen": [0, 1.12, 4.98, 7.02, 8.14],
+    "Dorian": [0, 2, 3, 5, 7, 9, 10], "Phrygian": [0, 1, 3, 5, 7, 8, 10],
+    "Lydian": [0, 2, 4, 6, 7, 9, 11], "Mixolydian": [0, 2, 4, 5, 7, 9, 10],
+    "Locrian": [0, 1, 3, 5, 6, 8, 10], "Harmonic Minor": [0, 2, 3, 5, 7, 8, 11],
+    "Melodic Minor": [0, 2, 3, 5, 7, 9, 11], "Pentatonic Maj": [0, 2, 4, 7, 9],
+    "Pentatonic Min": [0, 3, 5, 7, 10], "Blues": [0, 3, 5, 6, 7, 10],
+    "Whole Tone": [0, 2, 4, 6, 8, 10], "Acoustic": [0, 2, 4, 6, 7, 9, 10],
+    "Altered": [0, 1, 3, 4, 6, 8, 10], "Phrygian Dom": [0, 1, 4, 5, 7, 8, 10],
+    "Hungarian Min": [0, 2, 3, 6, 7, 8, 11], "Double Harm": [0, 1, 4, 5, 7, 8, 11]
+}
+
+def init_random_scale():
+    count = random.randint(5, 8)
+    scale = [0]
+    while len(scale) < count:
+        val = random.uniform(0.8, 11.5)
+        if all(abs(val - x) > 0.5 for x in scale):
+            scale.append(val)
+    scale.sort()
+    name = f"Rnd Micro {random.randint(100, 999)}"
+    SCALES[name] = scale
+```
+
 ## Chaotic 
