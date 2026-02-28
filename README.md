@@ -96,7 +96,7 @@ Check your [audio setting](audio_setting.py), run the script and remember the id
 #### Quadriphonic setup
 The soundstage is arranged in quadraphonic fashion, with the top-left grid outputting channel 0, the top-right grid outputting channel 1, the bottom-left grid outputting channel 3, and finally the bottom-right grid outputting channel 4.
 ```
-    0       FRONT Speakers               1  
+    1          FRONT Speakers             2  
      +-----------------------------------+
      |  (0,0)                     (7,0)  |
      |          <-------------->         |
@@ -108,7 +108,7 @@ The soundstage is arranged in quadraphonic fashion, with the top-left grid outpu
      |          <-------------->         |
      |  (0,7)                     (7,7)  |
      +-----------------------------------+
-    2         REAR speakers               3
+    3          REAR speakers              4
 ```
 
 
