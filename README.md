@@ -141,6 +141,6 @@ s.deactivateMidi()
 s.boot().start()
 ```
 ## Harmonic synth
-This script features a musical instrument selectable by its starting note (root) and scale. There are 20 different scales, including tonal, non-tonal, and microtonal, one of which is randomly generated upon startup. The buttons at the top allow you to increase or decrease the natural harmonics between 5 and 60, and control the volume. The buttons on the side activate the effects: reverb, delay, chorus, compression, and octave shift; the last button on the side turns everything off.
+The [synth_harms](synth_harms.py) script features a musical instrument selectable by its starting note (root) and scale. There are 20 different scales, including tonal, non-tonal, and microtonal, one of which is randomly generated upon startup. The buttons at the top allow you to increase or decrease the natural harmonics between 5 and 60, and control the volume. The buttons on the side activate the effects: reverb, delay, chorus, compression, and octave shift; the last button on the side turns everything off.
 
 ## Chaotic 
