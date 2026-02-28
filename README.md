@@ -159,6 +159,8 @@ Quadraphonic Harmonic Synth V2
 
 - Side Button 0: Reverb Cycle (OFF -> LOW -> MED -> HIGH)
 - Side Button 1: Delay Cycle (OFF -> LOW -> MED -> HIGH)
+- Side Button 2: Arpeggiator (ON/OFF)
+- Side Button 3: Drum Machine (OFF -> GREEN: Even -> AMBER: Odd -> RED: Silenced)
 - Side Button 4: Octave Up (Shifts grid pitch +3 octaves)
 - Side Button 5: Octave Down (Shifts grid pitch -3 octaves)
 - Side Button 6: Exit (Stops server and shuts down)
