@@ -93,7 +93,15 @@ X/Y MODE
 ### Audio Settings
 Check your [audio setting](audio_setting.py), run the script and remember the id of your device, usually ASIO. All script default to id=10, eventually the sound card has 4 outputs. Check your quadrophonic setup with [test_speakers](test_speakers.py).
 
-
+#### Quadriphonic setup
+The soundstage is arranged in quadraphonic fashion, with the top-left grid outputting channel 0, the top-right grid outputting channel 1, the bottom-left grid outputting channel 3, and finally the bottom-right grid outputting channel 4.
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
 
 
 ## Initialization
@@ -126,4 +134,5 @@ s.setOutputDevice(AUDIO_DEVICE)
 s.deactivateMidi()
 s.boot().start()
 ```
-
+## Harmonic synth
+## Chaotic 

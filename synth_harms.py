@@ -20,8 +20,8 @@ Quadraphonic Harmonic Synth V2
 
 - Side Button 0: Reverb Cycle (OFF -> LOW -> MED -> HIGH)
 - Side Button 1: Delay Cycle (OFF -> LOW -> MED -> HIGH)
-- Side Button 4: Octave Down (Shifts grid pitch -3 octaves)
-- Side Button 5: Octave Up (Shifts grid pitch +3 octaves)
+- Side Button 4: Octave Up (Shifts grid pitch +3 octaves)
+- Side Button 5: Octave Down (Shifts grid pitch -3 octaves)
 - Side Button 6: Exit (Stops server and shuts down)
 
 - 8x8 Grid: Note trigger with Quad Panning (X/Y position determines output channel gain)
@@ -100,8 +100,8 @@ harms_down_held = False
 
 # --- QUAD AUDIO CHAIN ---
 MAX_VOICES = 16
-harms_sig = pyo.Sig(value=5)
-harms_port = pyo.Port(harms_sig, risetime=0.5, falltime=0.5)
+harms_sig = Sig(value=5)
+harms_port = Port(harms_sig, risetime=0.5, falltime=0.5)
 
 voices_osc = []
 voices_env = []
@@ -264,8 +264,8 @@ def play_note(pad_id, x, y_logical):
     global voice_ptr
     pitch = get_pitch(x, y_logical); scale = SCALES[SCALE_NAMES[cur_scale]]
     rel_pitch = (pitch - cur_key) % 12; closest = min(scale, key=lambda x: abs(x - rel_pitch))
-    if abs(closest - rel_pitch) < 0.5: voices_osc[voice_ptr].setFreq(pyo.midiToHz(pitch - rel_pitch + closest))
-    else: voices_osc[voice_ptr].setFreq(pyo.midiToHz(pitch))
+    if abs(closest - rel_pitch) < 0.5: voices_osc[voice_ptr].setFreq(midiToHz(pitch - rel_pitch + closest))
+    else: voices_osc[voice_ptr].setFreq(midiToHz(pitch))
     gains = get_quad_gains(x, y_logical)
     for i in range(4): voices_gains[voice_ptr][i].value = gains[i]
     voices_env[voice_ptr].play(); active_voices[pad_id] = voice_ptr
@@ -284,7 +284,8 @@ def launchpad_listener():
     global cur_key, cur_scale, harms_sig, running, octave_offset, harms_up_held, harms_down_held
     while running:
         if harms_up_held:
-            step = max(0.15, (60 - harms_sig.value) * 0.04) 
+            # Change: Now matches button 5 behavior (slow at start, accelerating as it moves from 5)
+            step = max(0.15, (harms_sig.value - 5) * 0.04) 
             harms_sig.value = min(60, harms_sig.value + step)
             print(f"Harmonics: {int(harms_sig.value)} | Vol: {round(master_vol.value, 2)} | Key: {KEYS[cur_key]} | Scale: {SCALE_NAMES[cur_scale]}")
             refresh_grid(); time.sleep(0.1)
@@ -333,7 +334,8 @@ def launchpad_listener():
                 print(f"Delay: {['OFF', 'LOW', 'MED', 'HIGH'][fx_states[1]]} | Time: {delay_time_sig.value}s | Feedback: {delay_feed_sig.value} | Input: {delay_input_mix.value}")
                 refresh_grid()
             elif (side_idx == 4 or side_idx == 5) and state > 0:
-                octave_offset = max(-3, octave_offset - 1) if side_idx == 4 else min(3, octave_offset + 1)
+                # Change: Button 4 now increments, Button 5 now decrements
+                octave_offset = min(3, octave_offset + 1) if side_idx == 4 else max(-3, octave_offset - 1)
                 print(f"Octave: {octave_offset}"); refresh_grid()
             elif bid == SIDE_POWER_BTN and state > 0: 
                 print("Power button pressed. Exiting..."); running = False
