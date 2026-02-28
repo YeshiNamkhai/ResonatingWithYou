@@ -260,6 +260,20 @@ def update_pitch_leds(target_pitch):
         for x in range(8):
             if get_pitch(x, y) == target_pitch: queue_pad_update(x, y)
 
+def apply_immediate_transpose():
+    """Recalculates frequency for all currently active voices."""
+    for pid, v_idx in active_voices.items():
+        if mode == "MK2": x, y_log = (pid % 10) - 1, (pid // 10) - 1
+        else: x, y_log = pid % 16, 7 - (pid // 16)
+        pitch = get_pitch(x, y_log)
+        scale = SCALES[SCALE_NAMES[cur_scale]]
+        rel_pitch = (pitch - cur_key) % 12
+        closest = min(scale, key=lambda x: abs(x - rel_pitch))
+        if abs(closest - rel_pitch) < 0.5:
+            voices_osc[v_idx].setFreq(midiToHz(pitch - rel_pitch + closest))
+        else:
+            voices_osc[v_idx].setFreq(midiToHz(pitch))
+
 def play_note(pad_id, x, y_logical):
     global voice_ptr
     pitch = get_pitch(x, y_logical); scale = SCALES[SCALE_NAMES[cur_scale]]
@@ -284,14 +298,11 @@ def launchpad_listener():
     global cur_key, cur_scale, harms_sig, running, octave_offset, harms_up_held, harms_down_held
     while running:
         if harms_up_held:
-            # Change: Now matches button 5 behavior (slow at start, accelerating as it moves from 5)
-            step = max(0.15, (harms_sig.value - 5) * 0.04) 
-            harms_sig.value = min(60, harms_sig.value + step)
+            harms_sig.value = min(60, harms_sig.value + 1.0)
             print(f"Harmonics: {int(harms_sig.value)} | Vol: {round(master_vol.value, 2)} | Key: {KEYS[cur_key]} | Scale: {SCALE_NAMES[cur_scale]}")
             refresh_grid(); time.sleep(0.1)
         if harms_down_held:
-            step = max(0.15, (harms_sig.value - 5) * 0.04) 
-            harms_sig.value = max(5, harms_sig.value - step)
+            harms_sig.value = max(5, harms_sig.value - 1.0)
             print(f"Harmonics: {int(harms_sig.value)} | Vol: {round(master_vol.value, 2)} | Key: {KEYS[cur_key]} | Scale: {SCALE_NAMES[cur_scale]}")
             refresh_grid(); time.sleep(0.1)
 
@@ -302,8 +313,8 @@ def launchpad_listener():
             if is_top:
                 idx = (bid - 200) if mode == "MK1" else (bid - 104)
                 if state > 0:
-                    if idx == 0: cur_key = (cur_key + 1) % 12
-                    elif idx == 1: cur_key = (cur_key - 1) % 12
+                    if idx == 0: cur_key = (cur_key + 1) % 12; apply_immediate_transpose()
+                    elif idx == 1: cur_key = (cur_key - 1) % 12; apply_immediate_transpose()
                     elif idx == 2: cur_scale = (cur_scale + 1) % len(SCALE_NAMES)
                     elif idx == 3: cur_scale = (cur_scale - 1) % len(SCALE_NAMES)
                     elif idx == 4: harms_up_held = True
@@ -327,15 +338,15 @@ def launchpad_listener():
                 refresh_grid()
             elif side_idx == 1 and state > 0:
                 fx_states[1] = (fx_states[1] + 1) % 4
-                # Controlling input mix now:
                 delay_input_mix.value = [0.0, 0.3, 0.45, 0.6][fx_states[1]] 
                 delay_time_sig.value = [0.0075, 0.2, 0.4, 1.0][fx_states[1]] 
                 delay_feed_sig.value = [0.55, 0.6, 0.7, 0.8][fx_states[1]]
                 print(f"Delay: {['OFF', 'LOW', 'MED', 'HIGH'][fx_states[1]]} | Time: {delay_time_sig.value}s | Feedback: {delay_feed_sig.value} | Input: {delay_input_mix.value}")
                 refresh_grid()
             elif (side_idx == 4 or side_idx == 5) and state > 0:
-                # Change: Button 4 now increments, Button 5 now decrements
+                # Swapped: 4 increases, 5 decreases. Now transposes immediately.
                 octave_offset = min(3, octave_offset + 1) if side_idx == 4 else max(-3, octave_offset - 1)
+                apply_immediate_transpose()
                 print(f"Octave: {octave_offset}"); refresh_grid()
             elif bid == SIDE_POWER_BTN and state > 0: 
                 print("Power button pressed. Exiting..."); running = False

@@ -110,38 +110,6 @@ The soundstage is arranged in quadraphonic fashion, with the top-left grid outpu
      +-----------------------------------+
     3          REAR speakers              4
 ```
-Top row buttons 0-3:
-```mermaid
-graph TD
-    subgraph "Launchpad Top Row (Control)"
-        B0["Button ID: 0 (Solo CH 0)"] 
-        B1["Button ID: 1 (Solo CH 1)"]
-        B2["Button ID: 2 (Solo CH 2)"]
-        B3["Button ID: 3 (Solo CH 3)"]
-    end
-
-    subgraph "Audio Outputs (Sine Wave)"
-        OUT0["Front-Left (CH 0)"]
-        OUT1["Front-Right (CH 1)"]
-        OUT2["Rear-Left (CH 2)"]
-        OUT3["Rear-Right (CH 3)"]
-    end
-
-    B0 -- "Triggers 100% Gain" --> OUT0
-    B1 -- "Triggers 100% Gain" --> OUT1
-    B2 -- "Triggers 100% Gain" --> OUT2
-    B3 -- "Triggers 100% Gain" --> OUT3
-
-    style B0 fill:#e74c3c,color:#fff
-    style B1 fill:#e74c3c,color:#fff
-    style B2 fill:#e74c3c,color:#fff
-    style B3 fill:#e74c3c,color:#fff
-    style OUT0 fill:#3498db,color:#fff
-    style OUT1 fill:#3498db,color:#fff
-    style OUT2 fill:#3498db,color:#fff
-    style OUT3 fill:#3498db,color:#fff
-```
-
 ## Initialization
 All scripts initialize Launchpad over MIDI using pygame, while audio engine is initialized with [PYO](https://belangeo.github.io/pyo/) without MIDI support; pay attention to precedence or import with name.
 
