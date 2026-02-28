@@ -97,34 +97,39 @@ Check your [audio setting](audio_setting.py), run the script and remember the id
 The soundstage is arranged in quadraphonic fashion, with the top-left grid outputting channel 0, the top-right grid outputting channel 1, the bottom-left grid outputting channel 3, and finally the bottom-right grid outputting channel 4.
 ```mermaid
 graph TD
-    subgraph "FRONT"
-        S0["Speaker 0 (CH 0)<br/>Front-Left"] --- S1["Speaker 1 (CH 1)<br/>Front-Right"]
+    subgraph " "
+    direction TB
+        subgraph "FRONT"
+            direction LR
+            S0["[0] FRONT LEFT"] ~~~ S1["[1] FRONT RIGHT"]
+        end
+
+        C(( "LISTENER" ))
+
+        subgraph "REAR"
+            direction LR
+            S2["[2] REAR LEFT"] ~~~ S3["[3] REAR RIGHT"]
+        end
     end
 
-    subgraph "LISTENING POSITION"
-        LP["User / Launchpad"]
-    end
-
-    subgraph "REAR"
-        S2["Speaker 2 (CH 2)<br/>Rear-Left"] --- S3["Speaker 3 (CH 3)<br/>Rear-Right"]
-    end
-
-    %% Connection to Center
-    S0 --- LP
-    S1 --- LP
-    S2 --- LP
-    S3 --- LP
-
-    %% Side Connections
-    S0 --- S2
+    %% Circle Connections
+    S0 --- S1
     S1 --- S3
+    S3 --- S2
+    S2 --- S0
 
-    %% Styling for clarity
-    style LP fill:#2ecc71,stroke:#333,stroke-width:2px,color:#fff
-    style S0 fill:#3498db,stroke:#333,color:#fff
-    style S1 fill:#3498db,stroke:#333,color:#fff
-    style S2 fill:#3498db,stroke:#333,color:#fff
-    style S3 fill:#3498db,stroke:#333,color:#fff
+    %% Center Connections
+    S0 -.-> C
+    S1 -.-> C
+    S2 -.-> C
+    S3 -.-> C
+
+    %% Styling
+    style C fill:#2ecc71,stroke:#333,stroke-width:2px,color:#fff
+    style S0 fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style S1 fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style S2 fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style S3 fill:#f9f9f9,stroke:#333,stroke-width:2px
 ```
 
 
