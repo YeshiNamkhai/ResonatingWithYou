@@ -97,9 +97,12 @@ Check your [audio setting](audio_setting.py), run the script and remember the id
 
 
 ## Initialization
-All scripts initialize Launchpad over MIDI before audio (pygame), moreover the [PYO](https://belangeo.github.io/pyo/) server should not activate MIDI.
+All scripts initialize Launchpad over MIDI before audio (pygame), moreover the [PYO](https://belangeo.github.io/pyo/) server should not activate MIDI and being imported before.
 
 ```python
+from pyo import *
+import launchpad_py as launchpad
+
 AUDIO_DEVICE = 10
 AUDIO_HOST = 'asio'
 BUFFER_SIZE = 512 

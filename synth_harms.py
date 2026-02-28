@@ -1,9 +1,9 @@
 import sys
 import time
 import random
-import pyo
 import threading
 import queue
+from pyo import *
 import launchpad_py as launchpad
 
 """
@@ -37,7 +37,7 @@ print(mode)
 lp_lock = threading.Lock()
 
 # --- PYO SETUP ---
-s = pyo.Server(sr=48000, nchnls=4, duplex=0, buffersize=BUFFER_SIZE,winhost=AUDIO_HOST)
+s = Server(sr=48000, nchnls=4, duplex=0, buffersize=BUFFER_SIZE,winhost=AUDIO_HOST)
 s.setOutputDevice(AUDIO_DEVICE)
 s.deactivateMidi()
 s.boot().start()
@@ -97,41 +97,41 @@ voices_gains = []
 voices_outs = []  
 
 for _ in range(MAX_VOICES):
-    env = pyo.Adsr(attack=0.1, decay=0.3, sustain=0.6, release=0.8, dur=0, mul=0.2)
-    osc = pyo.Blit(freq=100, harms=harms_port, mul=env)
-    gains = [pyo.Sig(0) for _ in range(4)]
-    ports = [pyo.Port(g, 0.05, 0.05) for g in gains]
+    env = Adsr(attack=0.1, decay=0.3, sustain=0.6, release=0.8, dur=0, mul=0.2)
+    osc = Blit(freq=100, harms=harms_port, mul=env)
+    gains = [Sig(0) for _ in range(4)]
+    ports = [Port(g, 0.05, 0.05) for g in gains]
     outs = [osc * p for p in ports]
     voices_osc.append(osc)
     voices_env.append(env)
     voices_gains.append(gains)
     voices_outs.append(outs)
 
-quad_buses = [pyo.Mix([v[i] for v in voices_outs], voices=1) for i in range(4)]
+quad_buses = [Mix([v[i] for v in voices_outs], voices=1) for i in range(4)]
 
 # --- EFFECTS (DELAY -> REVERB) ---
 
 # 1. DELAY (WITH NATURAL TAIL FADE)
-delay_time_sig = pyo.Sig(0.0075) 
-delay_feed_sig = pyo.Sig(0.55)
-delay_feed_port = pyo.Port(delay_feed_sig, 0.2, 0.2)
-delay_input_mix = pyo.Sig(0) 
-delay_input_port = pyo.Port(delay_input_mix, 0.2, 0.2) # Ramps input to delay
+delay_time_sig = Sig(0.0075) 
+delay_feed_sig = Sig(0.55)
+delay_feed_port = Port(delay_feed_sig, 0.2, 0.2)
+delay_input_mix = Sig(0) 
+delay_input_port = Port(delay_input_mix, 0.2, 0.2) # Ramps input to delay
 
 # We multiply input by delay_input_port so when it's 0, the delay stops receiving sound but keeps playing its tail.
-delays = [pyo.Delay(quad_buses[i] * delay_input_port, delay=delay_time_sig, feedback=delay_feed_port, mul=1.0) for i in range(4)]
+delays = [Delay(quad_buses[i] * delay_input_port, delay=delay_time_sig, feedback=delay_feed_port, mul=1.0) for i in range(4)]
 delay_to_reverb = [quad_buses[i] + delays[i] for i in range(4)]
 
 # 2. REVERB
-rev_mix_sig = pyo.Sig(0)
-rev_mix_port = pyo.Port(rev_mix_sig, risetime=0.5, falltime=0.5)
-rev_size_sig = pyo.Sig(0.5)
-reverbs = [pyo.Freeverb(delay_to_reverb[i], size=rev_size_sig, damp=0.5, bal=rev_mix_port) for i in range(4)]
+rev_mix_sig = Sig(0)
+rev_mix_port = Port(rev_mix_sig, risetime=0.5, falltime=0.5)
+rev_size_sig = Sig(0.5)
+reverbs = [Freeverb(delay_to_reverb[i], size=rev_size_sig, damp=0.5, bal=rev_mix_port) for i in range(4)]
 
 # Master Volume
-master_vol = pyo.Sig(0.6)
-master_vol_port = pyo.Port(master_vol, 0.1, 0.1)
-amp_scale = pyo.Min(harms_port / 5.0, 2.0)
+master_vol = Sig(0.6)
+master_vol_port = Port(master_vol, 0.1, 0.1)
+amp_scale = Min(harms_port / 5.0, 2.0)
 
 GLOBAL_BOOST = 2.0 
 amp_final = master_vol_port * amp_scale * GLOBAL_BOOST
