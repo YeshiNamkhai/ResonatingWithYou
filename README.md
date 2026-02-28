@@ -95,36 +95,20 @@ Check your [audio setting](audio_setting.py), run the script and remember the id
 
 #### Quadriphonic setup
 The soundstage is arranged in quadraphonic fashion, with the top-left grid outputting channel 0, the top-right grid outputting channel 1, the bottom-left grid outputting channel 3, and finally the bottom-right grid outputting channel 4.
-```mermaid
-graph TD
-    %% The "Circle" outer boundary
-    subgraph Room [" "]
-        direction TB
-        
-        %% Top Row: Front Speakers
-        S0["[ BOX 0 ]<br/>Front Left"] --- S1["[ BOX 1 ]<br/>Front Right"]
-        
-        %% The Listening Space
-        S0 --- S2
-        S1 --- S3
-        
-        %% The Center Point
-        S0 --- Center(( LISTENER ))
-        S1 --- Center
-        S2 --- Center
-        S3 --- Center
-        
-        %% Bottom Row: Rear Speakers
-        S2["[ BOX 2 ]<br/>Rear Left"] --- S3["[ BOX 3 ]<br/>Rear Right"]
-    end
-
-    %% Visual Styling for a "Drawing" look
-    style Room fill:#fefefe,stroke:#333,stroke-width:4px
-    style Center fill:#fff,stroke:#000,stroke-width:2px
-    style S0 fill:#fff,stroke:#000,stroke-width:3px
-    style S1 fill:#fff,stroke:#000,stroke-width:3px
-    style S2 fill:#fff,stroke:#000,stroke-width:3px
-    style S3 fill:#fff,stroke:#000,stroke-width:3px
+```ASCII
+            FRONT (Speakers 0 & 1)
+      ___________________________________
+     |  (0,0)                     (7,0)  |
+     |             <----------->         |
+     |      ^           TOP           ^  |
+     |      |                         |  |
+     |      |        8x8 GRID         |  |
+     |      |                         |  |
+     |      v          BOTTOM         v  |
+     |            <----------->          |
+     |  (0,7)                     (7,7)  |
+     |___________________________________|
+             REAR (Speakers 2 & 3)
 ```
 
 
