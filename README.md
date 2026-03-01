@@ -258,7 +258,7 @@ def init_random_scale():
 ```
 </details>
 
-The grid shows the scales considering always (0,0) as the root note, therefore changing scale draws a different chromatic organizazion, opens with C Major scale. Same note show as white color, so playing F on row (0) will light up also on row (1); the notes on the 8x8 grid are laid out in fourths vertically. 
+The grid adopts isomorphic Layout[^5], scales start at (0,0) as the root note, therefore changing scale draws a different chromatic organizazion, opens with C Major scale. Same note show as white color, so playing F on row (0) will light up also on row (1); the notes on the 8x8 grid are laid out in fourths vertically. 
 
 ```
 0      1      2      3      4      5      6      7    (X)
@@ -318,3 +318,4 @@ Stochastic Field
 [^2]: [Python 3.11](https://www.python.org/downloads/release/python-3111/)
 [^3]: A Novation Launchpad (and Midi Fighter) control suite for Python. If you ever dreamed of using your Launchpad for completely other stuff than music: Welcome !-) [FMMT666/launchpad.py](https://github.com/FMMT666/launchpad.py)]
 [^4]: [PYO](https://belangeo.github.io/pyo/) is a Python module written in C to help digital signal processing script creation.
+[^5]: [The isomorphic note layout](https://hearandknow.wordpress.com/2014/03/15/the-isomorphic-note-layout/)
