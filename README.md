@@ -239,6 +239,6 @@ Stochastic Field
             Dim color = Ready; Bright color = Triggering; Red = Scale Root
 """
 ```
----
+
 # Referencies
 [^1]: Schafer's definitive soundscape text "The Tuning of the World" was published in 1977 within the [World SoundScape Project](https://www.sfu.ca/~truax/wsp.html).
