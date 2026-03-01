@@ -73,7 +73,10 @@ If you own a different gear check the library[^3], you may use it with minimal a
 ```
 </details>
 
-When is X/Y MODE most Launchpads operate in same way.
+<details>
+
+<summary>MK2 RAW MODE</summary>
+
 ```python
 X/Y MODE
   0   1   2   3   4   5   6   7      8   
@@ -99,6 +102,8 @@ X/Y MODE
 |   |   |   |   |   |   |   |   |  |8/8|  8
 +---+---+---+---+---+---+---+---+  +---+
 ```
+</details>
+When is X/Y MODE most Launchpads operate in same way.
 
 ### Audio Settings
 Check your [audio setting](audio_setting.py), run the script and remember the id of your device (default to 10), using ASIO host for low latency. The sound card has to have 4 outputs, verify your quadrophonic setup with [test_speakers](test_speakers.py), by scanning every grid cell, that correspond to a position in sound space, and by playing a pure sinewave within the sound space; use a fast circular gesture.
