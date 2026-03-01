@@ -18,6 +18,7 @@ If you own a different gear check the library[^3], you may use it with minimal a
 
 <details>
 <summary>MK1 RAW MODE</summary>
+
 ```python
 +---+---+---+---+---+---+---+---+ 
 |200|201|202|203|204|205|206|207| < or 0..7 with LedCtrlAutomap()
@@ -45,6 +46,7 @@ If you own a different gear check the library[^3], you may use it with minimal a
 
 <details>
 <summary>MK2 RAW MODE</summary>
+
 ```python
 +---+---+---+---+---+---+---+---+ 
 |104|   |106|   |   |   |   |111|
@@ -72,6 +74,7 @@ If you own a different gear check the library[^3], you may use it with minimal a
 
 <details>
 <summary>X/Y MODE</summary>
+
 ```python
   0   1   2   3   4   5   6   7      8   
 +---+---+---+---+---+---+---+---+ 
