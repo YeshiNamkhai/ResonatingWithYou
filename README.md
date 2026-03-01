@@ -260,7 +260,7 @@ def init_random_scale():
 
 The grid shows the scales considering always (0,0) as the root note, therefore changing scale draws a different chromatic organizazion, opens with C Major scale.
 
-```python
+```
 0      1      2      3      4      5      6      7    (X)
     +------+------+------+------+------+------+------+------+
  7  |  **C**   |  ·  |  D   |  ·  |  E   |  F   |  ·  |  G   |
