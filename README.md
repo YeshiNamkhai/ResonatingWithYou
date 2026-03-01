@@ -14,9 +14,12 @@ Choose a device, either mini or regular Launchpad; leds will operate RED and GRE
 - MK1 
 - MK2   
 
-If you own a different gear properly managed by the [launchpad.py](https://github.com/FMMT666/launchpad.py) library, you may use it with minimal adjustment to the code. Keep in mind that top and side buttons have different numbering, just like the main grid 8x8. The supprted code is the following:
+If you own a different gear check the library[^2], you may use it with minimal adjustment to the code. Keep in mind that top and side buttons have different numbering, just like the main grid 8x8. The supprted code is the following:
 
-MK1 RAW MODE
+<details>
+
+<summary>MK1 RAW MODE</summary>
+
 ```python
 +---+---+---+---+---+---+---+---+ 
 |200|201|202|203|204|205|206|207| < or 0..7 with LedCtrlAutomap()
@@ -40,8 +43,11 @@ MK1 RAW MODE
 |112|...|   |   |   |   |   |119|  |120|
 +---+---+---+---+---+---+---+---+  +---+
 ```
+</details>
 
-MK2 RAW MODE
+<details>
+<summary>MK2 RAW MODE</summary>
+
 ```python
 +---+---+---+---+---+---+---+---+ 
 |104|   |106|   |   |   |   |111|
@@ -65,8 +71,9 @@ MK2 RAW MODE
 | 11|   |   |   |   |   |   |   |  | 19|
 +---+---+---+---+---+---+---+---+  +---+
 ```
+</details>
 
-When is X/Y MODE most Launchpad operate in same way.
+When is X/Y MODE most Launchpads operate in same way.
 ```python
 X/Y MODE
   0   1   2   3   4   5   6   7      8   
@@ -241,3 +248,4 @@ Stochastic Field
 ```
 
 [^1]: Schafer's definitive soundscape text "The Tuning of the World" was published in 1977 within the [World SoundScape Project](https://www.sfu.ca/~truax/wsp.html).
+[^2]: A Novation Launchpad (and Midi Fighter) control suite for Python. If you ever dreamed of using your Launchpad for completely other stuff than music: Welcome !-) [FMMT666/launchpad.py](https://github.com/FMMT666/launchpad.py)]
