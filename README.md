@@ -6,7 +6,7 @@ Whether you're a yoga practitioner, a tireless enthusiast, or an academic, here 
 Within this space, scripts allow us to experience familiar aspects of music and acoustics, as well as shifting data arrangements and less-than-obvious relationships. This allows us to acquire a basic vocabulary and become aware of how data always carries meaning. Humans, in their actions, regardless of the meaning of their actions, produce noise [^1]; knowing how to listen makes a difference.
 
 ## Requirements
-To run the scripts you need a working knowledge of Python programming language, some DSP and audio programming, ability to use MIDI devices. First of all install [Python 3.11](https://www.python.org/downloads/release/python-3111/) and create an environement to add the modules from the [requirements](requirements.txt).
+To run the scripts you need a working knowledge of Python programming language, some DSP and audio programming, ability to use MIDI devices. First of all install Python[^0]  and create an environement to add the modules from the [requirements](requirements.txt).
 
 
 ### Novation Launchpad
@@ -246,6 +246,6 @@ Stochastic Field
             Dim color = Ready; Bright color = Triggering; Red = Scale Root
 """
 ```
-
+[^0]: [Python 3.11](https://www.python.org/downloads/release/python-3111/)
 [^1]: Schafer's definitive soundscape text "The Tuning of the World" was published in 1977 within the [World SoundScape Project](https://www.sfu.ca/~truax/wsp.html).
 [^2]: A Novation Launchpad (and Midi Fighter) control suite for Python. If you ever dreamed of using your Launchpad for completely other stuff than music: Welcome !-) [FMMT666/launchpad.py](https://github.com/FMMT666/launchpad.py)]
