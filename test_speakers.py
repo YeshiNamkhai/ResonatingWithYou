@@ -4,13 +4,46 @@ from pyo import *
 import launchpad_py as launchpad
 
 """
-4-Channel Audio & Grid Test V2
-==============================
+4-Channel Audio & Grid Test
+============================================================
+
 - Side Button 0: Toggles Auto-Scan (Pink Noise, Green LED)
 - Side Button 1: Toggles Manual Mode (Sine Wave, Green LED on press)
 - Top Buttons 0-3: Momentary Channel Solo (Sine Wave, Red on press)
 - Top Buttons 6-7: Main Volume (Amber 60%)
 - Side Button 6: Exit
+
+============================================================
+The soundstage is arranged in quadraphonic fashion, ideally 
+using four identical speakers: 
+Ch0 --> Spk1, Ch1 --> Spk2, Ch2 --> Spk3, Ch3 --> Spk4; 
+interpolation takes place between cells, for intermediate values.
+```
+    1          FRONT Speakers             2     
+     +-----------------------------------+ 
+     |  (0,0)                     (7,0)  |
+     |          <-------------->         |
+     |      ^                       ^    |
+     |      |                       |    |
+     |      |        8x8 GRID       |    |
+     |      |                       |    |
+     |      v                       v    |
+     |          <-------------->         |
+     |  (0,7)                     (7,7)  |
+     +-----------------------------------+  
+    3          REAR speakers              4
+
+============================================================
+get_quad_gains(x, y)
+
+       (0,0)  nx = x / 7.0  (1,0)
+         TL ----------------- TR
+          |        |          |
+          |     (nx, ny)      |  ny = (y - 1) / 7.0
+          |        |          |
+         BL ----------------- BR
+       (0,1)                (1,1)
+
 """
 AUDIO_DEVICE = 10
 AUDIO_HOST = 'asio'
