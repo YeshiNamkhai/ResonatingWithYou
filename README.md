@@ -277,4 +277,4 @@ Stochastic Field
 [^1]: Schafer's definitive soundscape text "The Tuning of the World" was published in 1977 within the [World SoundScape Project](https://www.sfu.ca/~truax/wsp.html).
 [^2]: [Python 3.11](https://www.python.org/downloads/release/python-3111/)
 [^3]: A Novation Launchpad (and Midi Fighter) control suite for Python. If you ever dreamed of using your Launchpad for completely other stuff than music: Welcome !-) [FMMT666/launchpad.py](https://github.com/FMMT666/launchpad.py)]
-[^4]: [PYO](https://belangeo.github.io/pyo/) 
+[^4]: [PYO](https://belangeo.github.io/pyo/) is a Python module written in C to help digital signal processing script creation.
