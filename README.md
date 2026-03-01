@@ -145,6 +145,10 @@ The soundstage is arranged in quadraphonic fashion, ideally using four identical
 ## Initialization
 All scripts initialize Launchpad over MIDI using pygame, while audio engine is initialized with [PYO](https://belangeo.github.io/pyo/) without MIDI support; pay attention to precedence or import with name.
 
+<details>
+
+<summary>imports and initialization</summary>
+
 ```python
 from pyo import *
 import launchpad_py as launchpad
@@ -172,6 +176,8 @@ s.setOutputDevice(AUDIO_DEVICE)
 s.deactivateMidi()
 s.boot().start()
 ```
+</details>
+
 ## Harmonic synth
 The [synth_harms](synth_harms.py) script features a musical instrument selectable by its starting note (root) and scale. There are many interesting scales, including tonal, non-tonal and microtonal, one of which is randomly generated upon startup. 
 
