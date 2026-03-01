@@ -402,7 +402,6 @@ Experiential psychoacoustic tests
 - Side Button 4: Toggles Risset Accelerando (Blue)
 - Side Button 5: Toggles Risset Decelerando (Blue)
 - Side Button 6: EXIT / POWER OFF (Blue/Cyan)
-
 """
 ```
 
