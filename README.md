@@ -381,6 +381,30 @@ Stochastic Field
 """
 ```
 
+## Psychoacoustic Tests
+The [psychoa_test](psychoa_test.py) script is a series of psychoacoustic tests that offer the opportunity to gain experiential knowledge in the context of quadraphonic setup.
+
+Button follow this schema :
+```python
+"""
+Experiential psychoacoustic tests
+============================================================
+
+- Top Buttons 0-3: Momentary Channel Solo (Sine Wave, Red)
+- Top Button 4: Toggles Auto-Scan (Pink Noise, Green/Red)
+- Top Button 5: Toggles Manual Mode (Sine Wave over Grid, Green/Red)
+- Top Buttons 6-7: Master Volume
+
+- Side Button 0: Doppler (Cycle: Low -> Mid -> High -> Off)
+- Side Button 1: Binaural Beats (Cycle: 36Hz -> 72Hz -> 108Hz -> Off)
+- Side Button 2: Toggles Ascending Shepherd (Green)
+- Side Button 3: Toggles Descending Shepherd (Green)
+- Side Button 4: Toggles Risset Accelerando (Blue)
+- Side Button 5: Toggles Risset Decelerando (Blue)
+- Side Button 6: EXIT / POWER OFF (Blue/Cyan)
+
+"""
+```
 
 [^1]: Schafer's definitive soundscape text "The Tuning of the World" was published in 1977 within the [World SoundScape Project](https://www.sfu.ca/~truax/wsp.html).
 [^2]: [Python 3.11](https://www.python.org/downloads/release/python-3111/)
