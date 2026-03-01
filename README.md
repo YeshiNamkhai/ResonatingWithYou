@@ -260,6 +260,7 @@ def init_random_scale():
 
 The grid shows the scales considering always (0,0) as the root note, therefore changing scale draws a different chromatic organizazion, opens with C Major scale.
 
+```markdown
 0      1      2      3      4      5      6      7    (X)
     +------+------+------+------+------+------+------+------+
  7  |  **C**   |  ·  |  D   |  ·  |  E   |  F   |  ·  |  G   |
@@ -279,7 +280,7 @@ The grid shows the scales considering always (0,0) as the root note, therefore c
  0  |  **C**   |  ·  |  D   |  ·  |  E   |  F   |  ·  |  G   |
     +------+------+------+------+------+------+------+------+
 (Y)    0      1      2      3      4      5      6      7
-
+```
 
 ## Stochastic field
 The [stochastic_field](stochastic_field.py) script is a rhythmic musical instrument that organizes notes in quadraphony, with their relative positioning allowing the user to choose the root note and the reference scale while playing. The left area of ​​the grid generates even rhythms, while the right area generates odd rhythms; the octave is distributed from top to bottom; the timbre can be modified  adding effect or channging the instrument playing.
