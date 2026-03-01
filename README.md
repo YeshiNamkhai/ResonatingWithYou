@@ -110,11 +110,7 @@ When is X/Y MODE most Launchpads operate in same way.
 Check your [audio setting](audio_setting.py), run the script and remember the id of your device (default to 10), using ASIO host for low latency. The sound card has to have 4 outputs, verify your quadrophonic setup with [test_speakers](test_speakers.py), by scanning every grid cell, that correspond to a position in sound space, and by playing a pure sinewave within the sound space; use a fast circular gesture.
 
 #### Quadriphonic setup
-The soundstage is arranged in quadraphonic fashion:
-* Ch0 --> Sp1,
-* Ch1 --> Sp2,
-* Ch2 --> Sp3,
-* Ch3 --> Sp4.
+The soundstage is arranged in quadraphonic fashion: Ch0 --> Sp1, Ch1 --> Sp2, Ch2 --> Sp3, Ch3 --> Sp4.
 ```
     1          FRONT Speakers             2             
      +-----------------------------------+              Ch1 --> Sp2
