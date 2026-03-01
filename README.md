@@ -182,8 +182,7 @@ s.boot().start()
 The [synth_harms](synth_harms.py) script features a musical instrument that allows you to explore melodic lines, to acquire a sensitivity to harmony, to create hybrid textures between harmonics and rhythm. It is selectable by its starting note (root) and scale. There are many interesting scales, including tonal, non-tonal and microtonal, one of which is randomly generated upon startup. 
 
 Buttons follow this schema:
-```python
-"""
+```
 Quadraphonic Harmonic Synth
 ==============================
 - Top Button 0: Key Up (Increments root note)
@@ -204,7 +203,6 @@ Quadraphonic Harmonic Synth
 - Side Button 6: Exit (Stops server and shuts down)
 
 - 8x8 Grid: Note trigger with Quad Panning (X/Y position determines output channel gain)
-"""
 ```
 
 <details>
@@ -354,8 +352,7 @@ Finally, the timbre can be modified by adding effects or changing the instrument
 
 
 Buttons follow this schema:
-```python
-"""
+```
 Stochastic Field
 ===========================================================
 - Top Button 0: Decrements global root note (C, C#, etc.)
@@ -378,7 +375,6 @@ Stochastic Field
             X/Y position calculates gain across 4 output channels (Quadraphonic)
             Position determines octave offset, scale note, and playback frequency
             Dim color = Ready; Bright color = Triggering; Red = Scale Root
-"""
 ```
 
 ## Psychoacoustic Tests
