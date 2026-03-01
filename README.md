@@ -112,8 +112,8 @@ Check your [audio setting](audio_setting.py), run the script and remember the id
 #### Quadriphonic setup
 The soundstage is arranged in quadraphonic fashion, with the top-left grid outputting channel 0 on speaker 1, the top-right grid outputting channel 1 on speaker 2, the bottom-left grid outputting channel 2 on speaker 3, and finally the bottom-right grid outputting channel 3 on speaker 4.
 ```
-    1          FRONT Speakers             2  
-     +-----------------------------------+
+    1          FRONT Speakers             2      Ch0 --> Spk1
+     +-----------------------------------+       Ch1 --> Spk2
      |  (0,0)                     (7,0)  |
      |          <-------------->         |
      |      ^                       ^    |
@@ -123,8 +123,8 @@ The soundstage is arranged in quadraphonic fashion, with the top-left grid outpu
      |      v                       v    |
      |          <-------------->         |
      |  (0,7)                     (7,7)  |
-     +-----------------------------------+
-    3          REAR speakers              4
+     +-----------------------------------+      Ch2 --> Spk 3
+    3          REAR speakers              4     Ch3 --> Spk 4
 ```
 ## Initialization
 All scripts initialize Launchpad over MIDI using pygame, while audio engine is initialized with [PYO](https://belangeo.github.io/pyo/) without MIDI support; pay attention to precedence or import with name.
