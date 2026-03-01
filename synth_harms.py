@@ -8,7 +8,13 @@ import launchpad_py as launchpad
 
 """
 Quadraphonic Harmonic Synth
-==============================
+=============================================================================================
+This script features a musical instrument that allows you to explore melodic lines, 
+to acquire a sensitivity to harmony, to create hybrid textures between harmonics and rhythm. 
+It is selectable by its starting note (root) and scale. There are many interesting scales, 
+including tonal, non-tonal and microtonal, one of which is randomly generated upon startup. 
+=============================================================================================
+
 - Top Button 0: Key Up (Increments root note)
 - Top Button 1: Key Down (Decrements root note)
 - Top Button 2: Scale Up (Cycles through 20+ musical scales)
@@ -27,6 +33,32 @@ Quadraphonic Harmonic Synth
 - Side Button 6: Exit (Stops server and shuts down)
 
 - 8x8 Grid: Note trigger with Quad Panning (X/Y position determines output channel gain)
+=============================================================================================
+The grid adopts isomorphic not layout, scales start at (0,0) as the root note, 
+    therefore changing scale draws a different chromatic organizazion, 
+    opens with C Major scale. Same note show as white color, 
+    so playing F on row (0) will light up also on row (1); 
+    the notes on the 8x8 grid are laid out in fourths vertically. 
+
+0      1      2      3      4      5      6      7    (X)
+    +------+------+------+------+------+------+------+------+
+ 7  |  C   |  ··  |  D   |  ··  |  E   |  F   |  ··  |  G   |
+    +------+------+------+------+------+------+------+------+
+ 6  |  G   |  ··  |  A   |  ··  |  B   |  C   |  ··  |  D   |
+    +------+------+------+------+------+------+------+------+
+ 5  |  D   |  ··  |  E   |  F   |  ··  |  G   |  ··  |  A   |
+    +------+------+------+------+------+------+------+------+
+ 4  |  A   |  ··  |  B   |  C   |  ··  |  D   |  ··  |  E   |
+    +------+------+------+------+------+------+------+------+
+ 3  |  E   |  F   |  ··  |  G   |  ··  |  A   |  ··  |  B   |
+    +------+------+------+------+------+------+------+------+
+ 2  |  B   |  C   |  ··  |  D   |  ··  |  E   |  F   |  ··  |
+    +------+------+------+------+------+------+------+------+
+ 1  |  F   |  ··  |  G   |  ··  |  A   |  ··  |  B   |  C   |
+    +------+------+------+------+------+------+------+------+
+ 0  |  C   |  ··  |  D   |  ··  |  E   |  F   |  ··  |  G   |
+    +------+------+------+------+------+------+------+------+
+(Y)    0      1      2      3      4      5      6      7
 """
 
 AUDIO_DEVICE = 10
@@ -100,34 +132,6 @@ def init_random_scale():
     scale.sort()
     name = f"Rnd Micro {random.randint(100, 999)}"
     SCALES[name] = scale
-
-"""
-The grid adopts isomorphic not layout, scales start at (0,0) as the root note, 
-    therefore changing scale draws a different chromatic organizazion, 
-    opens with C Major scale. Same note show as white color, 
-    so playing F on row (0) will light up also on row (1); 
-    the notes on the 8x8 grid are laid out in fourths vertically. 
-
-0      1      2      3      4      5      6      7    (X)
-    +------+------+------+------+------+------+------+------+
- 7  |  C   |  ··  |  D   |  ··  |  E   |  F   |  ··  |  G   |
-    +------+------+------+------+------+------+------+------+
- 6  |  G   |  ··  |  A   |  ··  |  B   |  C   |  ··  |  D   |
-    +------+------+------+------+------+------+------+------+
- 5  |  D   |  ··  |  E   |  F   |  ··  |  G   |  ··  |  A   |
-    +------+------+------+------+------+------+------+------+
- 4  |  A   |  ··  |  B   |  C   |  ··  |  D   |  ··  |  E   |
-    +------+------+------+------+------+------+------+------+
- 3  |  E   |  F   |  ··  |  G   |  ··  |  A   |  ··  |  B   |
-    +------+------+------+------+------+------+------+------+
- 2  |  B   |  C   |  ··  |  D   |  ··  |  E   |  F   |  ··  |
-    +------+------+------+------+------+------+------+------+
- 1  |  F   |  ··  |  G   |  ··  |  A   |  ··  |  B   |  C   |
-    +------+------+------+------+------+------+------+------+
- 0  |  C   |  ··  |  D   |  ··  |  E   |  F   |  ··  |  G   |
-    +------+------+------+------+------+------+------+------+
-(Y)    0      1      2      3      4      5      6      7
-"""
 
 
 init_random_scale()

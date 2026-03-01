@@ -4,7 +4,14 @@ import launchpad_py as launchpad
 
 """
 Stochastic Field
-===========================================================
+=============================================================================================
+This script script is a musical instrument that allows you to explore rhythm and 
+its relationship with internal time; rhythmic pulses are generated when a cell from 
+the grid is activated, they are pitched according to the root note and scale selected. 
+Cells on the grid, with their relative positioning in a quadraphonic configuration, 
+play until deactivaed a sequence chosen randomly.
+=============================================================================================
+
 - Top Button 0: Decrements global root note (C, C#, etc.)
 - Top Button 1: Increments global root note
 - Top Button 2: Cycles backward through the SCALES
@@ -25,6 +32,65 @@ Stochastic Field
             X/Y position calculates gain across 4 output channels (Quadraphonic)
             Position determines octave offset, scale note, and playback frequency
             Dim color = Ready; Bright color = Triggering; Red = Scale Root
+
+=============================================================================================
+The left area of ​​the grid generates even rhythms, while the right area generates odd rhythms. 
+
+LEFT (x < 4)                 RIGHT (x >= 4)
+        "EVEN" Rhythms                 "ODD" Rhythms
+      (Divisions: 1, 2, 4)           (Divisions: 1, 3, 5)
+    +-----------------------+      +-----------------------+
+    | Zone 12  |  Zone 13   |      | Zone 14  |  Zone 15   |
+7   | (Fastest | (Fast)     |      | (Fastest | (Fast)     |
+6   |  Center) |            |      |  Center) |            |
+5   |          |            |      |          |            |
+    +----------+------------+      +----------+------------+  <-- Row 5
+4   | Zone 8   |  Zone 9    |      | Zone 10  |  Zone 11   |
+3   | (Slow)   | (Slowest)  |      | (Slow)   | (Slowest)  |
+    +----------+------------+      +----------+------------+  <-- Row 3
+2   | Zone 4   |  Zone 5    |      | Zone 6   |  Zone 7    |
+1   | (Fastest | (Fast)     |      | (Fastest | (Fast)     |
+0   |  Center) |            |      |  Center) |            |
+    |          |            |      |          |            |
+    +----------+------------+      +----------+------------+
+(Y)    0  1  2  3                4  5  6  7    (X)
+
+* Horizontal Split (Rhythm Type):
+  - Left (x < 4): Cells are marked as is_even = True. When activated, they choose a beat division of 1, 2, or 4.
+  - Right (x >= 4): Cells are marked as is_even = False. They choose a beat division of 1, 3, or 5, creating triplets and quintuplets.
+
+*  Quadrant Speed (speed_mult):
+   - Within each 4x4 quadrant, the speed is calculated based on the distance from the center of that quadrant (coordinates 1.5, 1.5).
+   - Center of 4x4: The speed_mult is highest (up to 4.0x), making the notes trigger very fast.
+   - Corners of 4x4: The speed_mult is lowest (closer to 1.0x), resulting in a standard tempo.
+
+=============================================================================================
+The notes are arranged vertically, from top to bottom.
+
+LEFT (x < 4)          RIGHT (x >= 4)
+    +---------------------+---------------------+
+    |                     |                     |
+7   |       +1.5          |       +0.5          |
+6   |      Octave         |      Octave         |
+5   |                     |                     |
+    +---------------------+---------------------+  <-- Row 5 boundary
+4   |       +0.5          |       -0.5          |
+3   |      Octave         |      Octave         |
+    +---------------------+---------------------+  <-- Row 3 boundary
+2   |                     |                     |
+1   |       -1.0          |       -1.5          |
+0   |      Octave         |      Octave         |
+    |                     |                     |
+    +---------------------+---------------------+
+(Y)    0    1    2    3      4    5    6    7 (X)
+```
+* Key Distribution Details:
+    - Top Section (Rows 5, 6, 7): Provides the highest pitches, with the left side being one full octave higher than the right.
+    - Middle Section (Rows 3, 4): Provides a transition zone with a subtle one-octave difference (+0.5 vs -0.5) across the vertical split.
+    - Bottom Section (Rows 0, 1, 2): Provides the bass registers, where the right side (-1.5) is the lowest point on the grid.
+These offsets are multiplied by 12 and added to the scale degree and root note to determine the final frequency.
+
+Finally, the timbre can be modified by adding effects or changing the instrument's performance.
 """
 
 AUDIO_DEVICE = 10
