@@ -258,7 +258,7 @@ def init_random_scale():
 ```
 </details>
 
-The grid shows the scales considering always (0,0) as the root note, therefore changing scale draws a different chromatic organizazion, opens with C Major scale.
+The grid shows the scales considering always (0,0) as the root note, therefore changing scale draws a different chromatic organizazion, opens with C Major scale. Playing F on the row (0) will light up also on row (1), being the same note, as a white cell. 
 
 ```
 0      1      2      3      4      5      6      7    (X)
