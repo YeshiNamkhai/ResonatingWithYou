@@ -385,8 +385,7 @@ Stochastic Field
 The [psychoa_test](psychoa_test.py) script is a series of psychoacoustic tests that offer the opportunity to gain experiential knowledge in the context of quadraphonic setup.
 
 Button follow this schema :
-```python
-"""
+```
 Experiential psychoacoustic tests
 ============================================================
 
@@ -402,7 +401,6 @@ Experiential psychoacoustic tests
 - Side Button 4: Toggles Risset Accelerando (Blue)
 - Side Button 5: Toggles Risset Decelerando (Blue)
 - Side Button 6: EXIT / POWER OFF (Blue/Cyan)
-"""
 ```
 
 [^1]: Schafer's definitive soundscape text "The Tuning of the World" was published in 1977 within the [World SoundScape Project](https://www.sfu.ca/~truax/wsp.html).
