@@ -206,7 +206,11 @@ Quadraphonic Harmonic Synth
 - 8x8 Grid: Note trigger with Quad Panning (X/Y position determines output channel gain)
 """
 ```
-The 30 scales available are:
+
+<details>
+
+<summary>30 biltin scales</summary>
+
 ```python
 SCALES = {
     "Major": [0, 2, 4, 5, 7, 9, 11], "Minor": [0, 2, 3, 5, 7, 8, 10],
@@ -243,6 +247,7 @@ def init_random_scale():
     name = f"Rnd Micro {random.randint(100, 999)}"
     SCALES[name] = scale
 ```
+</details>
 
 ## Stochastic field
 The [stochastic_field](stochastic_field.py) script is a rhythmic musical instrument that organizes notes in quadraphony, with their relative positioning allowing the user to choose the root note and the reference scale while playing. The left area of ​​the grid generates even rhythms, while the right area generates odd rhythms; the octave is distributed from top to bottom; the timbre can be modified  adding effect or channging the instrument playing.
