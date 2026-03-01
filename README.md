@@ -1,6 +1,7 @@
 # Resonating With You
-Welcome to repository of **Resonating With You**, an event held in February 2026 at Dzamling Gar featuring an immersive sound experience designed to help you better understand yourself and the characteristics of your own perception.
+Welcome to the repository for **Resonating With You**, an event taking place in February 2026 at Dzamling Gar, offering an immersive sound experience designed to help you truly understand yourself and the characteristics of your perception of the world. It is intended for reflective individuals, those familiar with meditation, and researchers who wish to explore their work—the process of making sense of their data, experientially, through sound.
 
+Whether you're a yoga practitioner, a tireless enthusiast, or an academic, here you'll find scripts that gradually help you develop an awareness of sonic space, specifically quadraphonic space. In the same way we often take over visual space to project our own world of meaning—for example, a graph or histogram describing something interesting—we also take over sonic space. But there's a big difference between the correlation of two or more variables (already difficult to represent because statistics is not an easy subject) and the sense of coherence a soundscape provides. It's not a scalar, an abstract value, but a dynamic experience that somehow belongs to us. Music does this, so why not use this natural propensity to better understand ourselves and the world?
 
 ## Requirements
 To run the scripts you need a working knowledge of Python programming language, some DSP and audio programming, ability to use MIDI devices. First of all install [Python 3.11](https://www.python.org/downloads/release/python-3111/) and create an environement to add the modules from the [requirements](requirements.txt).
@@ -212,7 +213,7 @@ The [stochastic_field](stochastic_field.py) script is a rhythmic musical instrum
 Buttons follow this schema:
 ```python
 """
-Stochastic Field: Launchpad Interface Mapping
+Stochastic Field
 ===========================================================
 - Top Button 0: Decrements global root note (C, C#, etc.)
 - Top Button 1: Increments global root note

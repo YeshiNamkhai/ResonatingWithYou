@@ -3,7 +3,7 @@ from pyo import *
 import launchpad_py as launchpad
 
 """
-Stochastic Field: Launchpad Interface Mapping
+Stochastic Field
 ===========================================================
 - Top Button 0: Decrements global root note (C, C#, etc.)
 - Top Button 1: Increments global root note
