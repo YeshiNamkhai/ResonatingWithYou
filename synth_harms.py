@@ -102,7 +102,7 @@ def init_random_scale():
     SCALES[name] = scale
 
 """
-The grid adopts isomorphic Layout, scales start at (0,0) as the root note, 
+The grid adopts isomorphic not layout, scales start at (0,0) as the root note, 
     therefore changing scale draws a different chromatic organizazion, 
     opens with C Major scale. Same note show as white color, 
     so playing F on row (0) will light up also on row (1); 
