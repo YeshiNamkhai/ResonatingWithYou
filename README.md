@@ -258,6 +258,30 @@ def init_random_scale():
 ```
 </details>
 
+Grid show the scales considering always (0,0) as root note, therefore changing scale draw a different chromatic organizazion, opens with C Major scale.
+
+```python
+0      1      2      3      4      5      6      7    (X)
+    +------+------+------+------+------+------+------+------+
+ 7  |** C **|  ··  |  D   |  ··  |  E   |  F   |  ··  |  G   |
+    +------+------+------+------+------+------+------+------+
+ 6  |  G   |  ··  |  A   |  ··  |  B   |** C **|  ··  |  D   |
+    +------+------+------+------+------+------+------+------+
+ 5  |  D   |  ··  |  E   |  F   |  ··  |  G   |  ··  |  A   |
+    +------+------+------+------+------+------+------+------+
+ 4  |  A   |  ··  |  B   |** C **|  ··  |  D   |  ··  |  E   |
+    +------+------+------+------+------+------+------+------+
+ 3  |  E   |  F   |  ··  |  G   |  ··  |  A   |  ··  |  B   |
+    +------+------+------+------+------+------+------+------+
+ 2  |  B   |** C **|  ··  |  D   |  ··  |  E   |  F   |  ··  |
+    +------+------+------+------+------+------+------+------+
+ 1  |  F   |  ··  |  G   |  ··  |  A   |  ··  |  B   |** C **|
+    +------+------+------+------+------+------+------+------+
+ 0  |** C **|  ··  |  D   |  ··  |  E   |  F   |  ··  |  G   |
+    +------+------+------+------+------+------+------+------+
+(Y)    0      1      2      3      4      5      6      7
+```
+
 ## Stochastic field
 The [stochastic_field](stochastic_field.py) script is a rhythmic musical instrument that organizes notes in quadraphony, with their relative positioning allowing the user to choose the root note and the reference scale while playing. The left area of ​​the grid generates even rhythms, while the right area generates odd rhythms; the octave is distributed from top to bottom; the timbre can be modified  adding effect or channging the instrument playing.
 
@@ -288,6 +312,8 @@ Stochastic Field
             Dim color = Ready; Bright color = Triggering; Red = Scale Root
 """
 ```
+
+
 [^1]: Schafer's definitive soundscape text "The Tuning of the World" was published in 1977 within the [World SoundScape Project](https://www.sfu.ca/~truax/wsp.html).
 [^2]: [Python 3.11](https://www.python.org/downloads/release/python-3111/)
 [^3]: A Novation Launchpad (and Midi Fighter) control suite for Python. If you ever dreamed of using your Launchpad for completely other stuff than music: Welcome !-) [FMMT666/launchpad.py](https://github.com/FMMT666/launchpad.py)]
