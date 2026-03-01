@@ -143,11 +143,11 @@ The soundstage is arranged in quadraphonic fashion, ideally using four identical
 
 
 ## Initialization
-All scripts initialize Launchpad over MIDI using pygame, before audio engine[^4] and  wit no MIDI support; respect precedence or import with name.
+All scripts initialize Launchpad over MIDI using pygame, before audio engine[^4] and  with no MIDI support; respect precedence or import with name. 
 
 <details>
 
-<summary>imports and initialization</summary>
+<summary>example of import and initialization</summary>
 
 ```python
 from pyo import *
