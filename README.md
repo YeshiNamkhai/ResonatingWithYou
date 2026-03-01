@@ -209,11 +209,12 @@ Quadraphonic Harmonic Synth
 
 <details>
 
-<summary>30 biltin scales</summary>
+<summary>30 built in scales</summary>
 
 ```python
 SCALES = {
-    "Major": [0, 2, 4, 5, 7, 9, 11], "Minor": [0, 2, 3, 5, 7, 8, 10],
+    "Major": [0, 2, 4, 5, 7, 9, 11], 
+    "Minor": [0, 2, 3, 5, 7, 8, 10],
     "Indian Bhairav": [0, 1.12, 3.86, 4.98, 7.02, 8.14, 10.88],
     "Indian Marwa": [0, 1.12, 3.86, 5.90, 7.02, 9.06, 10.88],
     "Chinese Pentatonic": [0, 2.04, 3.86, 7.02, 9.06],
@@ -222,14 +223,22 @@ SCALES = {
     "Partch Otonality": [0, 2.04, 3.86, 4.98, 7.02, 8.84, 10.88],
     "Japanese Hirajoshi": [0, 2.04, 3.16, 7.02, 8.14],
     "Japanese In Sen": [0, 1.12, 4.98, 7.02, 8.14],
-    "Dorian": [0, 2, 3, 5, 7, 9, 10], "Phrygian": [0, 1, 3, 5, 7, 8, 10],
-    "Lydian": [0, 2, 4, 6, 7, 9, 11], "Mixolydian": [0, 2, 4, 5, 7, 9, 10],
-    "Locrian": [0, 1, 3, 5, 6, 8, 10], "Harmonic Minor": [0, 2, 3, 5, 7, 8, 11],
-    "Melodic Minor": [0, 2, 3, 5, 7, 9, 11], "Pentatonic Maj": [0, 2, 4, 7, 9],
-    "Pentatonic Min": [0, 3, 5, 7, 10], "Blues": [0, 3, 5, 6, 7, 10],
-    "Whole Tone": [0, 2, 4, 6, 8, 10], "Acoustic": [0, 2, 4, 6, 7, 9, 10],
-    "Altered": [0, 1, 3, 4, 6, 8, 10], "Phrygian Dom": [0, 1, 4, 5, 7, 8, 10],
-    "Hungarian Min": [0, 2, 3, 6, 7, 8, 11], "Double Harm": [0, 1, 4, 5, 7, 8, 11],
+    "Dorian": [0, 2, 3, 5, 7, 9, 10], 
+    "Phrygian": [0, 1, 3, 5, 7, 8, 10],
+    "Lydian": [0, 2, 4, 6, 7, 9, 11], 
+    "Mixolydian": [0, 2, 4, 5, 7, 9, 10],
+    "Locrian": [0, 1, 3, 5, 6, 8, 10], 
+    "Harmonic Minor": [0, 2, 3, 5, 7, 8, 11],
+    "Melodic Minor": [0, 2, 3, 5, 7, 9, 11], 
+    "Pentatonic Maj": [0, 2, 4, 7, 9],
+    "Pentatonic Min": [0, 3, 5, 7, 10], 
+    "Blues": [0, 3, 5, 6, 7, 10],
+    "Whole Tone": [0, 2, 4, 6, 8, 10], 
+    "Acoustic": [0, 2, 4, 6, 7, 9, 10],
+    "Altered": [0, 1, 3, 4, 6, 8, 10], 
+    "Phrygian Dom": [0, 1, 4, 5, 7, 8, 10],
+    "Hungarian Min": [0, 2, 3, 6, 7, 8, 11], 
+    "Double Harm": [0, 1, 4, 5, 7, 8, 11],
     "15-TET": [0, 1.6, 4.0, 5.6, 8.0, 9.6, 11.2],
     "19-TET": [0, 1.89, 3.79, 5.05, 6.95, 8.84, 10.74],
     "Bohlen-Pierce": [0, 1.46, 2.93, 4.39, 5.85, 7.32, 8.78],
