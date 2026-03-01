@@ -258,7 +258,7 @@ def init_random_scale():
 ```
 </details>
 
-The grid adopts isomorphic Layout[^5], scales start at (0,0) as the root note, therefore changing scale draws a different chromatic organizazion, opens with C Major scale. Same note show as white color, so playing F on row (0) will light up also on row (1); the notes on the 8x8 grid are laid out in fourths vertically. 
+The grid adopts the isomorphic layout[^5], scales start at (0,0) as the root note, therefore changing scale draws a different chromatic organizazion, opens with C Major scale. Same note show as white color, so playing F on row (0) will light up also on row (1); the notes on the 8x8 grid are laid out in fourths vertically. 
 
 ```
 0      1      2      3      4      5      6      7    (X)
