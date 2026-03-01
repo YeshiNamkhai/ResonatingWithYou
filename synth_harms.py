@@ -201,9 +201,9 @@ rev_mix_port = Port(rev_mix_sig, risetime=0.5, falltime=0.5)
 rev_size_sig = Sig(0.5)
 reverbs = [Freeverb(delay_to_reverb[i], size=rev_size_sig, damp=0.5, bal=rev_mix_port) for i in range(4)]
 
-# Master Volume
-master_vol = Sig(0.6)
-master_vol_port = Port(master_vol, 0.1, 0.1)
+# --- Master Volume with Fader 
+master_fader = Fader(fadein=4.0, fadeout=2.0, dur=0, mul=0.6).play()
+master_vol_port = Port(master_fader, 0.1, 0.1)
 amp_scale = Min(harms_port / 5.0, 2.0)
 
 GLOBAL_BOOST = 2.0 
@@ -313,7 +313,7 @@ def refresh_grid_immediate():
             h_col = (0,3) if h_val<20 else (3,3) if h_val<40 else (3,0)
             lp.LedCtrlRaw(200+4, *h_col); lp.LedCtrlRaw(200+5, *h_col)
     
-    vol = master_vol.value
+    vol = master_fader.mul
     with lp_lock:
         if mode == "MK2":
             v_col = (0,63,0) if vol<0.4 else (63,63,0) if vol<0.7 else (63,0,0)
@@ -447,11 +447,11 @@ def launchpad_listener():
                     elif idx == 3: cur_scale = (cur_scale - 1) % len(SCALE_NAMES)
                     elif idx == 4: harms_up_held = True
                     elif idx == 5: harms_down_held = True
-                    elif idx == 6: master_vol.value = max(0.0, master_vol.value - 0.05)
-                    elif idx == 7: master_vol.value = min(1.0, master_vol.value + 0.05)
+                    elif idx == 6: master_fader.mul = max(0.0, master_fader.mul - 0.05)
+                    elif idx == 7: master_fader.mul = min(1.0, master_fader.mul + 0.05)
                     
                     if idx in [0,1,2,3,6,7]:
-                        print(f"Key: {KEYS[cur_key]} | Scale: {SCALE_NAMES[cur_scale]} | Volume: {round(master_vol.value, 2)}")
+                        print(f"Key: {KEYS[cur_key]} | Scale: {SCALE_NAMES[cur_scale]} | Volume: {round(master_fader.mul, 2)}")
                         refresh_grid()
                 else:
                     if idx == 4: harms_up_held = False
@@ -483,8 +483,11 @@ def launchpad_listener():
                 octave_offset = min(3, octave_offset + 1) if side_idx == 4 else max(-3, octave_offset - 1)
                 apply_immediate_transpose()
                 print(f"Octave: {octave_offset}"); refresh_grid()
+
             elif bid == SIDE_POWER_BTN and state > 0: 
-                print("Power button pressed. Exiting..."); running = False
+                print("FADING OUT..."); master_fader.stop()
+                # Delay shutdown to allow for the 2-second fade
+                threading.Timer(2.1, lambda: globals().update(running=False)).start()
             elif not is_top:
                 if mode == "MK2" and bid % 10 != 9: x, y_log = (bid % 10) - 1, (bid // 10) - 1
                 elif mode == "MK1" and bid % 16 < 8: x, y_log = bid % 16, 7 - (bid // 16)

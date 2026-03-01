@@ -164,7 +164,14 @@ def update_ui():
     lp_led_raw(SIDE_DELAY_BTN, fx_colors[delay_cycle_idx][0], fx_colors[delay_cycle_idx][1])
     lp_led_raw(SIDE_CHORUS_BTN, fx_colors[chorus_cycle_idx][0], fx_colors[chorus_cycle_idx][1])
 
-    lp_led_raw(SIDE_BTNS[0], 0, 63); lp_led_raw(SIDE_POWER_BTN, 0, 63)
+    lp_led_raw(SIDE_BTNS[0], 0, 63)
+    # Modified Power Button Color to match synth_harms.py
+    if mode == "Mk2":
+        lp_led_raw(SIDE_POWER_BTN, 10, 10) # Using first two args for R, G as per lp_led_raw definition
+        lp.LedCtrlRaw(SIDE_POWER_BTN, 10, 10, 63) # Direct call to include the Blue channel for MK2
+    else:
+        lp_led_raw(SIDE_POWER_BTN, 1, 3) 
+
     lp_led_raw(SIDE_NEXT_SOUND, 0, 63); lp_led_raw(SIDE_PREV_SOUND, 0, 63)
 
 def update_reverb_settings():
