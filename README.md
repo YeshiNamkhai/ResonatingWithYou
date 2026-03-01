@@ -17,6 +17,7 @@ Choose a device, either mini or regular Launchpad; leds will operate RED and GRE
 If you own a different gear check the library[^3], you may use it with minimal adjustment to the code. Keep in mind that top and side buttons have different numbering, just like the main grid 8x8. The supprted code is the following:
 
 <details>
+
 <summary>MK1 RAW MODE</summary>
 
 ```python
@@ -45,6 +46,7 @@ If you own a different gear check the library[^3], you may use it with minimal a
 </details>
 
 <details>
+
 <summary>MK2 RAW MODE</summary>
 
 ```python
@@ -73,6 +75,7 @@ If you own a different gear check the library[^3], you may use it with minimal a
 </details>
 
 <details>
+
 <summary>X/Y MODE</summary>
 
 ```python
@@ -100,6 +103,7 @@ If you own a different gear check the library[^3], you may use it with minimal a
 +---+---+---+---+---+---+---+---+  +---+
 ```
 </details>
+
 When is X/Y MODE most Launchpads operate in same way.
 
 ### Audio Settings
