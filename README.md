@@ -126,14 +126,12 @@ The soundstage is arranged in quadraphonic fashion, with the top-left grid outpu
      +-----------------------------------+              Ch2 --> Sp3
     3          REAR speakers              4             Ch3 --> Sp4
 ```
-Formula breakdown
-
 <details>
 
 <summary>get_quad_gains(x, y)</summary>
 
 ```python
-(0,0)  nx = x / 7.0  (1,0)
+       (0,0)  nx = x / 7.0  (1,0)
          TL ----------------- TR
           |        |          |
           |     (nx, ny)      |  ny = (y - 1) / 7.0
