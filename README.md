@@ -474,4 +474,4 @@ Formalized music
 [^3]: A Novation Launchpad (and Midi Fighter) control suite for Python. If you ever dreamed of using your Launchpad for completely other stuff than music: Welcome !-) [FMMT666/launchpad.py](https://github.com/FMMT666/launchpad.py)]
 [^4]: [PYO](https://belangeo.github.io/pyo/) is a Python module written in C to help digital signal processing script creation.
 [^5]: [The isomorphic note layout](https://hearandknow.wordpress.com/2014/03/15/the-isomorphic-note-layout/)
-[^6]: [Formalized Music](https://en.wikipedia.org/wiki/Formalized_Music) THOUGHT AND MATHEMATICS IN COMPOSITION
+[^6]: [Formalized Music](https://en.wikipedia.org/wiki/Formalized_Music): Thought and Mathematics in Composition
