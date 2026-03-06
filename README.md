@@ -517,6 +517,7 @@ Example of default scale (Partch Otonality)
 ## ChNN sonic image 
 The [chnn_scan](chnn_scan.py) script is a quadraphonic image-to-sound sonifier. It scans a digital image pixel-by-pixel and shows the position on GUI, while allowing to control the speed, reverb and compression for a better listening experience.
 <p><img src="https://raw.githubusercontent.com/YeshiNamkhai/ResonatingWithYou/refs/heads/main/201310%20ChNN%20Barcelona%20by%20Paolo%20Fassoli_09_square_BW.jpg" width="150"></p>
+
 ## Generative field
 The [gen_field](gen_field.py) script creates walker logic to navigate a stochastic soundscape, where four independent algorithmic agents move across an 8x8 grid to trigger and spatialize sound.
 
