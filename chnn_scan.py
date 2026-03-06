@@ -7,6 +7,15 @@ AUDIO_DEVICE = 10
 AUDIO_HOST = 'asio'
 BUFFER_SIZE = 512 
 
+"""
+ChNN sonic image
+================================================================
+This script is a quadraphonic image-to-sound sonifier. It scans
+a digital image pixel-by-pixel and shows the position on GUI, while
+allowing to control the speed, reverb and compression for a better
+listening experience.
+"""
+
 # 1. File Path Configuration
 path = './'
 file = '201310 ChNN Barcelona by Paolo Fassoli_09_square'
