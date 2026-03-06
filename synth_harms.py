@@ -133,7 +133,6 @@ def init_random_scale():
     name = f"Rnd Micro {random.randint(100, 999)}"
     SCALES[name] = scale
 
-
 init_random_scale()
 SCALE_NAMES = list(SCALES.keys())
 KEYS = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
