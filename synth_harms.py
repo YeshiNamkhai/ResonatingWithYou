@@ -431,11 +431,11 @@ def launchpad_listener():
     while running:
         if harms_up_held:
             harms_sig.value = min(60, harms_sig.value + 1.0)
-            print(f"Harmonics: {int(harms_sig.value)} | Vol: {round(master_vol.value, 2)} | Key: {KEYS[cur_key]} | Scale: {SCALE_NAMES[cur_scale]}")
+            print(f"Harmonics: {int(harms_sig.value)} | Vol: {round(master_fader.mul, 2)} | Key: {KEYS[cur_key]} | Scale: {SCALE_NAMES[cur_scale]}")
             refresh_grid(); time.sleep(0.1)
         if harms_down_held:
             harms_sig.value = max(5, harms_sig.value - 1.0)
-            print(f"Harmonics: {int(harms_sig.value)} | Vol: {round(master_vol.value, 2)} | Key: {KEYS[cur_key]} | Scale: {SCALE_NAMES[cur_scale]}")
+            print(f"Harmonics: {int(harms_sig.value)} | Vol: {round(master_fader.mul, 2)} | Key: {KEYS[cur_key]} | Scale: {SCALE_NAMES[cur_scale]}")
             refresh_grid(); time.sleep(0.1)
 
         with lp_lock: ev = lp.ButtonStateRaw()
