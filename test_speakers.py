@@ -6,11 +6,11 @@ import launchpad_py as launchpad
 """
 4-Channel Audio & Grid Test
 ============================================================
-
 - Top Buttons 0-3: Momentary Channel Solo (Sine Wave, Red on press)
 - Top Button 4: Toggles Auto-Scan (Pink Noise, Green/Red)
 - Top Button 5: Toggles Manual Mode (Sine Wave, Green/Red)
 - Top Buttons 6-7: Main Volume (Amber 60%)
+
 - Side Button 6: EXIT / POWER OFF (Blue/Cyan)
 
 ============================================================

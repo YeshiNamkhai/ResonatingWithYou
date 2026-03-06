@@ -378,9 +378,11 @@ Stochastic Field
 ```
 
 ## Living beings field
+The [beings_field](beings_field.py) script is a musical instrument that allows you to explore sound space within time constrains, living beings are created by pressing side buttons. Their ability to move and interact is modulated by your choises, pressing top buttons. On the grid youcan activate obstacles and trap beings, their sound will switch from pulse to tone. 
 
+Buttons follow this schema:
 ```
- --- Living Beings Field: 
+Living Beings Field: 
 ====================================================================================================
 Top Buttons   0: Delay Multi-State (Cycle Off/Circular/Ping-Pong, Green/Red/Amber)
 Top Button    1: FM Collision Toggle (Red = Enabled, Green = Disabled)
@@ -487,7 +489,6 @@ The [gen_field](gen_field.py) script creates walker logic to navigate a stochast
 
 Buttons follow this schema:
 ```
-"""
 Generative Field
 ============================================================
 - Top Buttons 0-3: Momentary Channel Solo (Sine Wave, Red on press)
@@ -498,7 +499,6 @@ Generative Field
 - Side Buttons 0-3: Toggle Algorithmic Walkers (Markov, Brownian, Fractal, Genetic)
 - Side Buttons 4-6: Speed Selectors (Half, Normal, Double Schumann Speed)
 - Side Button 7: EXIT / POWER OFF (Blue/Cyan on Mk2, 2-sec Fade Out on press)
-"""
 ```
 
 ## Formalized music

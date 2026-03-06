@@ -4,7 +4,12 @@ from pyo import *
 import launchpad_py as launchpad
 
 """
- --- Living Beings Field: 
+Living Beings Field: 
+====================================================================================================
+The [beings_field](beings_field.py) script is a musical instrument that allows you to explore sound 
+space within time constrains, living beings are created by pressing side buttons. Their ability to 
+move and interact is modulated by your choises, pressing top buttons. On the grid youcan activate 
+obstacles and trap beings, their sound will switch from pulse to tone. 
 ====================================================================================================
 Top Buttons   0: Delay Multi-State (Cycle Off/Circular/Ping-Pong, Green/Red/Amber)
 Top Button    1: FM Collision Toggle (Red = Enabled, Green = Disabled)
@@ -25,10 +30,11 @@ Main Grid (8x8):
 - Press Empty Cell: Toggle Static Obstacle (Amber LED)
 - Active Balls: Real-time position tracking (Unique colors per ball index)
 
+====================================================================================================
 Life Expectancy (shown at start):
 - FEW COLUMNS (e.g., 1): Balls lose energy quickly and stop soon.
 - MANY COLUMNS (e.g., 8): Balls lose energy very slowly, moving for a long time.
-====================================================================================================
+
 """
 
 AUDIO_DEVICE = 10

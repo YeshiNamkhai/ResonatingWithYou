@@ -8,6 +8,12 @@ import launchpad_py as launchpad
 """
 Entropic field
 ======================================================================================
+This script creates a chaotic motion of cells, initially stacked in two columns. 
+You can select the initial layout, default to left which works also in stereo, 
+when top or bottom, which goes from bright to dull tone or opposite, 
+only works with 4 speakers; you may also experiment with reverb, delay and speed. 
+Entropy increases and the cells move for about 4 minutes, reaching the opposite side.
+======================================================================================
 - Top Buttons 0-1: Scale Selection (Cycle SCALES_DICT, Green/Amber)
 - Top Buttons 2-3: Position Selection (Cycle LEFT/RIGHT/TOP/BOTTOM, Amber)
 - Top Buttons 6-7: Main Volume (Amber 60%, Adjusts user_vol)
@@ -18,12 +24,6 @@ Entropic field
 - Side Button 3: Delay Toggle (Temporal Delay 0.1s-0.2s, Green/Amber)
 - Side Button 6: EXIT / POWER OFF (Blue/Cyan - Matched to test_speakers)
 
-======================================================================================
-This script creates a chaotic motion of cells, initially stacked in two columns. 
-You can select the initial layout, default to left which works also in stereo, 
-when top or bottom, which goes from bright to dull tone or opposite, 
-only works with 4 speakers; you may also experiment with reverb, delay and speed. 
-Entropy increases and the cells move for about 4 minutes, reaching the opposite side.
 ======================================================================================
 Example of default scale (Partch Otonality)
 

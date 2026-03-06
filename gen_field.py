@@ -5,7 +5,10 @@ import launchpad_py as launchpad
 
 """
 Generative Field (Walker Logic)
-============================================================
+====================================================================================
+This script creates walker logic to navigate a stochastic soundscape, where four 
+independent algorithmic agents move across an 8x8 grid to trigger and spatialize sound.
+====================================================================================
 - Top Buttons 0-3: Momentary Channel Solo (Sine Wave, Red on press)
 - Top Button 4: Delay Multi-State (Cycle Off/Low/Mid/High, Green/Amber/Red)
 - Top Button 5: Reverb Multi-State (Cycle Off/Low/Mid/High, Green/Amber/Red)

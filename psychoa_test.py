@@ -5,8 +5,10 @@ import launchpad_py as launchpad
 
 """
 Experiential psychoacoustic tests
-============================================================
-
+============================================================================
+This script is a series of psychoacoustic tests that offer the opportunity 
+to gain experiential knowledge in the context of quadraphonic setup.
+============================================================================
 - Top Buttons 0-3: Momentary Channel Solo (Sine Wave, Red)
 - Top Button 4: Toggles Auto-Scan (Pink Noise, Green/Red)
 - Top Button 5: Toggles Manual Mode (Sine Wave over Grid, Green/Red)
@@ -19,7 +21,6 @@ Experiential psychoacoustic tests
 - Side Button 4: Toggles Risset Accelerando (Blue)
 - Side Button 5: Toggles Risset Decelerando (Blue)
 - Side Button 6: EXIT / POWER OFF (Blue/Cyan)
-
 """
 AUDIO_DEVICE = 10
 AUDIO_HOST = 'asio' 

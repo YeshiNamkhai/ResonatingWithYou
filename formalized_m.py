@@ -5,7 +5,11 @@ import launchpad_py as launchpad
 
 """
 Formalized music
-============================================================
+==================================================================================
+This script retraces the main stages of Iannis Xenakis's text, arranging the iconic 
+sounds in conflict with each other in quadraphonic sound, as is predictable, according 
+to game theory; the grid is occupied with known statistical models and algorithms.
+==================================================================================
 - Top Buttons 0-3: Momentary Channel Solo (Sine Wave, Red on press)
 - Top Button 4: Delay Multi-State (Cycle Off/Low/Mid/High, Green/Amber/Red)
 - Top Button 5: Reverb Multi-State (Cycle Off/Low/Mid/High, Green/Amber/Red)
