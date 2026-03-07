@@ -8,7 +8,7 @@ Whether you're a yoga practitioner, a tireless enthusiast, or an academic, here 
 There are several similar projects and many highly valuable electroacoustic artistic works. What's different about this? The sonic space is fixed, the directions are fixed, the colors have complete meaning, as the attributes and actions of the sonic entities. The entire coherence is based on principles familiar to Tibetan Buddhism, which make the mandala something extraordinary, and all of this is not just a flavor but a place for reflection.
 
 ### What makes it work?
-Within this space, scripts allow us to experience familiar aspects of music and acoustics, as well as shifting data arrangements and less-than-obvious relationships. This allows us to acquire a basic vocabulary and become aware of how data always carries meaning. Humans, in their actions, regardless of the meaning of their actions, produce noise [^1]; knowing how to listen makes a difference.
+In this space, scripts allow people to experience familiar aspects of music and acoustics, as well as shifting data arrangements and less obvious relationships. This facilitates vocabulary formation and an awareness of how data always carries meaning. Humans, in their actions, regardless of the meaning of their actions, produce noise [^1]; knowing how to listen makes all the difference.
 
 ## Requirements
 To run the scripts you need a working knowledge of Python programming language, some DSP and audio programming, ability to use MIDI devices. First of all install Python[^2]  and create an environement to add the modules from the [requirements](requirements.txt).
