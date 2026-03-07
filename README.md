@@ -1,10 +1,13 @@
 # Resonating With You
 Welcome to the repository for **Resonating With You**, an event taking place in February 2026 at Dzamling Gar, offering an immersive sound experience designed to help you truly understand yourself and the characteristics of your perception of the world. It is intended for reflective individuals, those familiar with meditation, and researchers who wish to explore their work—the process of making sense of their data, experientially, through sound.
 
+## Who is it for?
 Whether you're a yoga practitioner, a tireless enthusiast, or an academic, here you'll find scripts that gradually help you develop an awareness of sonic space, specifically quadraphonic space. In the same way we often take over visual space to project our own world of meaning—for example, a graph or histogram describing something interesting—we also take over sonic space. But there's a big difference between the correlation of two or more variables (already difficult to represent because statistics is not an easy subject) and the sense of coherence a soundscape provides. It's not a scalar, an abstract value, but a dynamic experience that somehow belongs to us. Music does this, so why not use this natural propensity to better understand ourselves and the world?
 
+## Why it matters?
 There are several similar projects and many highly valuable electroacoustic artistic works. What's different about this? The sonic space is fixed, the directions are fixed, the colors have complete meaning, as the attributes and actions of the sonic entities. The entire coherence is based on principles familiar to Tibetan Buddhism, which make the mandala something extraordinary, and all of this is not just a flavor but a place for reflection.
 
+### What makes it work?
 Within this space, scripts allow us to experience familiar aspects of music and acoustics, as well as shifting data arrangements and less-than-obvious relationships. This allows us to acquire a basic vocabulary and become aware of how data always carries meaning. Humans, in their actions, regardless of the meaning of their actions, produce noise [^1]; knowing how to listen makes a difference.
 
 ## Requirements
